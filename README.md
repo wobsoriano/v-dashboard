@@ -2,7 +2,7 @@
 
 Dashboard starter template built with Vite, Vue 3, Tailwind CSS and TypeScript.
 
-Clone of https://github.com/tailwindcomponents/dashboard
+Copied from https://github.com/tailwindcomponents/dashboard and converted to Vue.
 
 ## Demo
 
