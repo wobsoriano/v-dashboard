@@ -1,6 +1,12 @@
 # V-Dashboard
 
-Vite + TypeScript dashboard starter template.
+Dashboard starter template built with Vite, Vue 3, Tailwind CSS and TypeScript.
+
+Clone of https://github.com/tailwindcomponents/dashboard
+
+## Demo
+
+![Demo](https://i.imgur.com/RqXxEHL.gif)
 
 ## Project setup
 ```

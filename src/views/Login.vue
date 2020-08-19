@@ -81,7 +81,7 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const email = ref('johndoe@mail.com');
-    const password = ref('********');
+    const password = ref('@#!@#asdf1231!_!@#');
 
     function login() {
       router.push('/dashboard');
