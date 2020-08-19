@@ -14,14 +14,11 @@ export default defineComponent({
   setup() {
     const { currentRoute } = useRouter();
 
-    const burgerClicked = ref(false);
-
     const layout = computed(
       () => `${currentRoute.value.meta.layout || defaultLayout}-layout`
     );
 
     return {
-      burgerClicked,
       layout,
     };
   },
