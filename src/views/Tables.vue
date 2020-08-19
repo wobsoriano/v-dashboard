@@ -312,26 +312,26 @@
 import { defineComponent, ref } from 'vue';
 
 interface ISimpleTableData {
-  city: string;
-  totalOrders: string;
+	city: string;
+	totalOrders: string;
 }
 
 interface IPaginatedTableData {
-  picture: string;
-  name: string;
-  role: string;
-  created: string;
-  status: string;
-  statusColor: string;
+	picture: string;
+	name: string;
+	role: string;
+	created: string;
+	status: string;
+	statusColor: string;
 }
 
 interface IWideTableData {
-  name: string;
-  email: string;
-  title: string;
-  title2: string;
-  status: string;
-  role: string;
+	name: string;
+	email: string;
+	title: string;
+	title2: string;
+	status: string;
+	role: string;
 }
 
 export default defineComponent({
@@ -389,7 +389,7 @@ export default defineComponent({
         title: 'Software Engineer',
         title2: 'Web dev',
         status: 'Active',
-        role: 'Owner ',
+        role: 'Owner',
       }))
     );
 

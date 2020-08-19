@@ -4,7 +4,7 @@
   >
     <div class="flex items-center">
       <button
-        @click="openSidebar"
+        @click="burgerClicked"
         class="text-gray-500 focus:outline-none lg:hidden"
       >
         <svg
@@ -112,12 +112,12 @@ export default defineComponent({
   setup(_, { emit }) {
     const dropdownOpen = ref(false);
 
-    const openSidebar = () => {
-      emit('openSidebar');
+    const burgerClicked = () => {
+      emit('burgerClicked');
     };
 
     return {
-      openSidebar,
+      burgerClicked,
       dropdownOpen,
     };
   },

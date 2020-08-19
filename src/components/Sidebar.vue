@@ -1,11 +1,5 @@
 <template>
   <div
-    :class="sidebarOpen ? 'block' : 'hidden'"
-    @click="sidebarOpen = false"
-    class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"
-  ></div>
-
-  <div
     :class="
       sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'
     "
@@ -159,31 +153,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   props: {
-    burgerClicked: {
+    sidebarOpen: {
       type: Boolean,
       default: false,
     },
   },
   setup(props) {
-    const sidebarOpen = ref(false);
     const activeClass =
       'bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100';
     const inactiveClass =
       'border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100';
 
-    watch(
-      () => props.burgerClicked,
-      (selection, prevSelection) => {
-        sidebarOpen.value = true;
-      }
-    );
-
     return {
-      sidebarOpen,
       activeClass,
       inactiveClass,
     };
