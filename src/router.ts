@@ -18,7 +18,6 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
-    meta: { layout: 'default' },
   },
   {
     path: '/forms',
