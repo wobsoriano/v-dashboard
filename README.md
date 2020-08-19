@@ -6,6 +6,8 @@ Clone of https://github.com/tailwindcomponents/dashboard
 
 ## Demo
 
+https://v-dashboard.vercel.app/
+
 ![Demo](https://i.imgur.com/RqXxEHL.gif)
 
 ## Project setup
