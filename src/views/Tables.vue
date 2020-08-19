@@ -9,30 +9,16 @@
         <table class="text-left w-full border-collapse">
           <thead class="border-b">
             <tr>
+              <th class="py-3 px-5 bg-indigo-800 font-medium uppercase text-sm text-gray-100">City</th>
               <th
                 class="py-3 px-5 bg-indigo-800 font-medium uppercase text-sm text-gray-100"
-              >
-                City
-              </th>
-              <th
-                class="py-3 px-5 bg-indigo-800 font-medium uppercase text-sm text-gray-100"
-              >
-                Total orders
-              </th>
+              >Total orders</th>
             </tr>
           </thead>
           <tbody>
-            <tr
-              v-for="(i, index) in simpleTableData"
-              :key="index"
-              class="hover:bg-gray-200"
-            >
-              <td class="py-4 px-6 border-b text-gray-700 text-lg">
-                {{ i.city }}
-              </td>
-              <td class="py-4 px-6 border-b text-gray-500">
-                {{ i.totalOrders }}
-              </td>
+            <tr v-for="(i, index) in simpleTableData" :key="index" class="hover:bg-gray-200">
+              <td class="py-4 px-6 border-b text-gray-700 text-lg">{{ i.city }}</td>
+              <td class="py-4 px-6 border-b text-gray-500">{{ i.totalOrders }}</td>
             </tr>
           </tbody>
         </table>
@@ -102,7 +88,7 @@
             <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
               <path
                 d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-              ></path>
+              />
             </svg>
           </span>
 
@@ -120,24 +106,16 @@
               <tr>
                 <th
                   class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  User
-                </th>
+                >User</th>
                 <th
                   class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  Role
-                </th>
+                >Role</th>
                 <th
                   class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  Created at
-                </th>
+                >Created at</th>
                 <th
                   class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
-                >
-                  Status
-                </th>
+                >Status</th>
               </tr>
             </thead>
             <tbody>
@@ -145,17 +123,11 @@
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 w-10 h-10">
-                      <img
-                        class="w-full h-full rounded-full"
-                        :src="u.picture"
-                        alt=""
-                      />
+                      <img class="w-full h-full rounded-full" :src="u.picture" alt />
                     </div>
 
                     <div class="ml-3">
-                      <p class="text-gray-900 whitespace-no-wrap">
-                        {{ u.name }}
-                      </p>
+                      <p class="text-gray-900 whitespace-no-wrap">{{ u.name }}</p>
                     </div>
                   </div>
                 </td>
@@ -163,9 +135,7 @@
                   <p class="text-gray-900 whitespace-no-wrap">{{ u.role }}</p>
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p class="text-gray-900 whitespace-no-wrap">
-                    {{ u.created }}
-                  </p>
+                  <p class="text-gray-900 whitespace-no-wrap">{{ u.created }}</p>
                 </td>
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <span
@@ -184,21 +154,15 @@
           <div
             class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
           >
-            <span class="text-xs xs:text-sm text-gray-900"
-              >Showing 1 to 4 of 50 Entries</span
-            >
+            <span class="text-xs xs:text-sm text-gray-900">Showing 1 to 4 of 50 Entries</span>
 
             <div class="inline-flex mt-2 xs:mt-0">
               <button
                 class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l"
-              >
-                Prev
-              </button>
+              >Prev</button>
               <button
                 class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r"
-              >
-                Next
-              </button>
+              >Next</button>
             </div>
           </div>
         </div>
@@ -219,85 +183,58 @@
               <tr>
                 <th
                   class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Name
-                </th>
+                >Name</th>
                 <th
                   class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Title
-                </th>
+                >Title</th>
                 <th
                   class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Status
-                </th>
+                >Status</th>
                 <th
                   class="px-6 py-3 border-b border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  Role
-                </th>
+                >Role</th>
                 <th class="px-6 py-3 border-b border-gray-200 bg-gray-100"></th>
               </tr>
             </thead>
 
             <tbody class="bg-white">
               <tr v-for="(u, index) in wideTableData" :key="index">
-                <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
-                >
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
                       <img
                         class="h-10 w-10 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                        alt
                       />
                     </div>
 
                     <div class="ml-4">
-                      <div class="text-sm leading-5 font-medium text-gray-900">
-                        {{ u.name }}
-                      </div>
-                      <div class="text-sm leading-5 text-gray-500">
-                        {{ u.email }}
-                      </div>
+                      <div class="text-sm leading-5 font-medium text-gray-900">{{ u.name }}</div>
+                      <div class="text-sm leading-5 text-gray-500">{{ u.email }}</div>
                     </div>
                   </div>
                 </td>
 
-                <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
-                >
-                  <div class="text-sm leading-5 text-gray-900">
-                    {{ u.title }}
-                  </div>
-                  <div class="text-sm leading-5 text-gray-500">
-                    {{ u.title2 }}
-                  </div>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <div class="text-sm leading-5 text-gray-900">{{ u.title }}</div>
+                  <div class="text-sm leading-5 text-gray-500">{{ u.title2 }}</div>
                 </td>
 
-                <td
-                  class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
-                >
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <span
                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                    >{{ u.status }}</span
-                  >
+                  >{{ u.status }}</span>
                 </td>
 
                 <td
                   class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
-                >
-                  {{ u.role }}
-                </td>
+                >{{ u.role }}</td>
 
                 <td
                   class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
                 >
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                    >Edit</a
-                  >
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                 </td>
               </tr>
             </tbody>
@@ -309,89 +246,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from "vue";
 
-interface ISimpleTableData {
-	city: string;
-	totalOrders: string;
-}
-
-interface IPaginatedTableData {
-	picture: string;
-	name: string;
-	role: string;
-	created: string;
-	status: string;
-	statusColor: string;
-}
-
-interface IWideTableData {
-	name: string;
-	email: string;
-	title: string;
-	title2: string;
-	status: string;
-	role: string;
-}
+import { useTableData } from "../hooks/useTableData";
 
 export default defineComponent({
   setup() {
-    const simpleTableData = ref<ISimpleTableData[]>([
-      { city: 'New York', totalOrders: '200,120' },
-      { city: 'Manchester', totalOrders: '632,310' },
-      { city: 'London', totalOrders: '451,110' },
-      { city: 'Madrid', totalOrders: '132,524' },
-    ]);
-
-    const paginatedTableData = ref<IPaginatedTableData[]>([
-      {
-        picture:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80',
-        name: 'Vera Carpenter',
-        role: 'Admin',
-        created: 'Jan 21, 2020',
-        status: 'Active',
-        statusColor: 'green',
-      },
-      {
-        picture:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80',
-        name: 'Blake Bowman',
-        role: 'Editor',
-        created: 'Jan 01, 2020',
-        status: 'Active',
-        statusColor: 'green',
-      },
-      {
-        picture:
-          'https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80',
-        name: 'Dana Moore',
-        role: 'Editor',
-        created: 'Jan 10, 2020',
-        status: 'Suspended',
-        statusColor: 'orange',
-      },
-      {
-        picture:
-          'https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80',
-        name: 'Alonzo Cox',
-        role: 'Admin',
-        created: 'Jan 18, 2020',
-        status: 'Inactive',
-        statusColor: 'red',
-      },
-    ]);
-
-    const wideTableData = ref<IWideTableData[]>(
-      [...Array(10).keys()].map(() => ({
-        name: 'John Doe',
-        email: 'john@example.com',
-        title: 'Software Engineer',
-        title2: 'Web dev',
-        status: 'Active',
-        role: 'Owner',
-      }))
-    );
+    const {
+      simpleTableData,
+      paginatedTableData,
+      wideTableData,
+    } = useTableData();
 
     return {
       simpleTableData,
