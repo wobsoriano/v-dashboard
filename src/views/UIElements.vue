@@ -51,7 +51,7 @@
             <div class="mx-3">
               <span class="text-blue-500 font-semibold">Info</span>
               <p class="text-gray-600 text-sm">
-                Channel archived by owner.
+                Channel archived by the owner.
               </p>
             </div>
           </div>
