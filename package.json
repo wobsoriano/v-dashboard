@@ -13,6 +13,6 @@
   "devDependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
     "@vue/compiler-sfc": "^3.0.0-rc.9",
-    "vite": "^1.0.0-rc.1"
+    "vite": "^1.0.0-rc.4"
   }
 }
