@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center items-center h-screen bg-gray-200 px-6">
     <div class="p-6 max-w-sm w-full bg-white shadow-md rounded-md">
-      <div class="flex flex justify-center items-center">
+      <div class="flex justify-center items-center">
         <svg
           class="h-10 w-10"
           viewBox="0 0 512 512"
@@ -55,8 +55,7 @@
             <a
               class="block text-sm fontme text-indigo-700 hover:underline"
               href="#"
-              >Forgot your password?</a
-            >
+            >Forgot your password?</a>
           </div>
         </div>
 
@@ -64,9 +63,7 @@
           <button
             type="submit"
             class="py-2 px-4 text-center bg-indigo-600 rounded-md w-full text-white text-sm hover:bg-indigo-500"
-          >
-            Sign in
-          </button>
+          >Sign in</button>
         </div>
       </form>
     </div>
@@ -74,17 +71,17 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   setup() {
     const router = useRouter();
-    const email = ref('johndoe@mail.com');
-    const password = ref('@#!@#asdf1231!_!@#');
+    const email = ref("johndoe@mail.com");
+    const password = ref("@#!@#asdf1231!_!@#");
 
     function login() {
-      router.push('/dashboard');
+      router.push("/dashboard");
     }
 
     return {
