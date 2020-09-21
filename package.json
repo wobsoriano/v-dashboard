@@ -8,7 +8,7 @@
   "dependencies": {
     "tailwindcss": "^1.8.10",
     "vue": "next",
-    "vue-router": "4.0.0-beta.7"
+    "vue-router": "^4.0.0-beta.11"
   },
   "devDependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
