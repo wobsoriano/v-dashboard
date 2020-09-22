@@ -27,12 +27,5 @@ export default defineComponent({
     Header,
     Sidebar,
   },
-  setup() {
-    const { isOpen } = useSidebar();
-
-    return {
-      isOpen,
-    };
-  },
 });
 </script>

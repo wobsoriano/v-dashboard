@@ -162,7 +162,7 @@ import { defineComponent, ref } from "vue";
 import { useSidebar } from "../hooks/useSidebar";
 
 export default defineComponent({
-  setup(props) {
+  setup() {
     const { isOpen } = useSidebar();
     const activeClass = ref(
       "bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
