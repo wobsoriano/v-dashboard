@@ -24,3 +24,9 @@ yarn dev
 ```
 yarn build
 ```
+
+## License & copyright
+
+© Robert C Soriano
+
+Licensed under the [MIT License](LICENSE.md).
