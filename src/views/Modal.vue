@@ -4,12 +4,18 @@
     <button
       @click="open = true"
       class="mt-3 px-6 py-3 bg-indigo-600 rounded-md text-white font-medium tracking-wide hover:bg-indigo-500"
-    >Open Modal</button>
+    >
+      Open Modal
+    </button>
 
     <div
-      :class="`modal ${!open && 'opacity-0 pointer-events-none'} z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center`"
+      :class="`modal ${
+        !open && 'opacity-0 pointer-events-none'
+      } z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center`"
     >
-      <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+      <div
+        class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"
+      ></div>
 
       <div
         class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto"
@@ -59,11 +65,15 @@
             <button
               @click="open = false"
               class="px-6 py-3 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2"
-            >Close</button>
+            >
+              Close
+            </button>
             <button
               @click="open = false"
               class="px-6 py-3 bg-indigo-600 rounded-md text-white font-medium tracking-wide hover:bg-indigo-500"
-            >Action</button>
+            >
+              Action
+            </button>
           </div>
         </div>
       </div>
