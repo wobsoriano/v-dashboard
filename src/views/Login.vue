@@ -55,7 +55,8 @@
             <a
               class="block text-sm fontme text-indigo-700 hover:underline"
               href="#"
-            >Forgot your password?</a>
+              >Forgot your password?</a
+            >
           </div>
         </div>
 
@@ -63,7 +64,9 @@
           <button
             type="submit"
             class="py-2 px-4 text-center bg-indigo-600 rounded-md w-full text-white text-sm hover:bg-indigo-500"
-          >Sign in</button>
+          >
+            Sign in
+          </button>
         </div>
       </form>
     </div>
