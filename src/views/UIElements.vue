@@ -123,7 +123,7 @@
             <input
               type="radio"
               :class="`form-radio h-5 w-5 text-${c}-600`"
-              checked
+              name="radio"
             /><span class="ml-2 text-gray-700">label</span>
           </label>
         </div>
