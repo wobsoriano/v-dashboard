@@ -5,7 +5,7 @@
     <div class="mt-4 mb-3">
       <h4 class="text-gray-700">Stacked</h4>
 
-      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+      <div class="max-w-sm rounded overflow-hidden shadow-lg mt-6">
         <img
           class="w-full"
           src="https://via.placeholder.com/384x234"
@@ -39,7 +39,7 @@
     <div class="mt-5">
       <h4 class="text-gray-700">Horizontal</h4>
 
-      <div class="max-w-sm w-full lg:max-w-full lg:flex">
+      <div class="max-w-sm w-full lg:max-w-full lg:flex mt-6">
         <div
           class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
           style="background-image: url('https://via.placeholder.com/192x291')"

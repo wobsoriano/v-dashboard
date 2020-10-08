@@ -52,15 +52,6 @@ const routes: RouteRecordRaw[] = [
     name: "Blank",
     component: Blank,
   },
-  {
-    path: '/404',
-    name: 'NotFound',
-    component: NotFound,
-  },
-  {
-    path: '/*',
-    redirect: '/404',
-  },
 ];
 
 const router = createRouter({
