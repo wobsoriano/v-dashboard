@@ -6,7 +6,9 @@ import Tables from "./views/Tables.vue";
 import UIElements from "./views/UIElements.vue";
 import Login from "./views/Login.vue";
 import Modal from "./views/Modal.vue";
+import Card from "./views/Card.vue";
 import Blank from "./views/Blank.vue";
+import NotFound from "./views/NotFound.vue";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -24,6 +26,11 @@ const routes: RouteRecordRaw[] = [
     path: "/forms",
     name: "Forms",
     component: Forms,
+  },
+  {
+    path: "/cards",
+    name: "Cards",
+    component: Card,
   },
   {
     path: "/tables",
@@ -44,6 +51,15 @@ const routes: RouteRecordRaw[] = [
     path: "/blank",
     name: "Blank",
     component: Blank,
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: NotFound,
+  },
+  {
+    path: '/*',
+    redirect: '/404',
   },
 ];
 
