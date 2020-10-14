@@ -16,7 +16,7 @@
           The page you are looking for was moved, removed, renamed or might
           never exist!
         </p>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5" @click.prevent="back">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5" @click.prevent="back">
           Back
         </button>
       </div>
