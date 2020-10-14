@@ -1,18 +1,17 @@
 <template>
   <div>
     <h3 class="text-gray-700 text-3xl font-semibold">Card</h3>
-
     <div class="mt-4 mb-3">
       <h4 class="text-gray-700">Stacked</h4>
 
-      <div class="max-w-sm rounded overflow-hidden shadow-lg mt-6">
+      <div class="max-w-sm rounded bg-white overflow-hidden shadow-lg mt-6">
         <img
           class="w-full"
-          src="https://via.placeholder.com/384x234"
+          src="https://picsum.photos/id/1016/384/234"
           alt="Sunset in the mountains"
         />
         <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+          <div class="text-gray-900 font-bold text-xl mb-2">The Coldest Sunset</div>
           <p class="text-gray-700 text-base">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Voluptatibus quia, nulla! Maiores et perferendis eaque,
@@ -38,11 +37,10 @@
     <hr />
     <div class="mt-5">
       <h4 class="text-gray-700">Horizontal</h4>
-
       <div class="max-w-sm w-full lg:max-w-full lg:flex mt-6">
         <div
           class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-          style="background-image: url('https://via.placeholder.com/192x291')"
+          style="background-image: url('https://picsum.photos/id/0/192/213')"
           title="Woman holding a mug"
         ></div>
         <div
