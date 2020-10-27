@@ -14,6 +14,6 @@
     "@tailwindcss/custom-forms": "^0.2.1",
     "@vue/compiler-sfc": "^3.0.0",
     "cross-env": "^7.0.2",
-    "vite": "^1.0.0-rc.4"
+    "vite": "^1.0.0-rc.8"
   }
 }
