@@ -42,7 +42,7 @@
 
       <nav class="mt-10">
         <router-link
-          class="flex items-center mt-4 py-2 px-6 border-l-4"
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Dashboard' ? activeClass : inactiveClass]"
           to="/dashboard"
         >
@@ -66,7 +66,7 @@
         </router-link>
 
         <router-link
-          class="flex items-center mt-4 py-2 px-6 border-l-4"
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'UIElements' ? activeClass : inactiveClass]"
           to="/ui-elements"
         >
@@ -98,7 +98,7 @@
         </router-link>
 
         <router-link
-          class="flex items-center mt-4 py-2 px-6 border-l-4"
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Tables' ? activeClass : inactiveClass]"
           to="/tables"
         >
@@ -126,7 +126,7 @@
         </router-link>
 
         <router-link
-          class="flex items-center mt-4 py-2 px-6 border-l-4"
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Forms' ? activeClass : inactiveClass]"
           to="/forms"
         >
@@ -145,7 +145,7 @@
         </router-link>
 
         <router-link
-          class="flex items-center mt-4 py-2 px-6 border-l-4"
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Cards' ? activeClass : inactiveClass]"
           to="/cards"
         >
@@ -164,7 +164,7 @@
         </router-link>
 
         <router-link
-          class="flex items-center mt-4 py-2 px-6 border-l-4"
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Modal' ? activeClass : inactiveClass]"
           to="/modal"
         >
@@ -178,7 +178,7 @@
         </router-link>
 
         <router-link
-          class="flex items-center mt-4 py-2 px-6 border-l-4"
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Blank' ? activeClass : inactiveClass]"
           to="/blank"
         >
