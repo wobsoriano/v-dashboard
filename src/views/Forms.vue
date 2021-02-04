@@ -55,7 +55,7 @@
 
                 <input
                   type="text"
-                  class="form-input w-full px-12 py-2 appearance-none rounded-md focus:border-indigo-600"
+                  class="w-full px-12 py-2 appearance-none rounded-md focus:border-indigo-600"
                 />
               </div>
             </div>
@@ -91,7 +91,7 @@
               <div>
                 <label class="text-gray-700" for="username">Username</label>
                 <input
-                  class="form-input w-full mt-2 rounded-md focus:border-indigo-600"
+                  class="w-full mt-2 rounded-md focus:border-indigo-600"
                   type="text"
                   v-model="user.username"
                 />
@@ -102,7 +102,7 @@
                   >Email Address</label
                 >
                 <input
-                  class="form-input w-full mt-2 rounded-md focus:border-indigo-600"
+                  class="w-full mt-2 rounded-md focus:border-indigo-600"
                   type="email"
                   v-model="user.email"
                 />
@@ -111,7 +111,7 @@
               <div>
                 <label class="text-gray-700" for="password">Password</label>
                 <input
-                  class="form-input w-full mt-2 rounded-md focus:border-indigo-600"
+                  class="w-full mt-2 rounded-md focus:border-indigo-600"
                   type="password"
                   v-model="user.password"
                 />
@@ -122,7 +122,7 @@
                   >Password Confirmation</label
                 >
                 <input
-                  class="form-input w-full mt-2 rounded-md focus:border-indigo-600"
+                  class="w-full mt-2 rounded-md focus:border-indigo-600"
                   type="password"
                   v-model="user.confirm"
                 />

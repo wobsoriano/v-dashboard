@@ -37,7 +37,7 @@
         </span>
 
         <input
-          class="form-input w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600"
+          class="w-32 sm:w-64 rounded-md pl-10 pr-4 focus:border-indigo-600"
           type="text"
           placeholder="Search"
         />
