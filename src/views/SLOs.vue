@@ -1,0 +1,558 @@
+<template>
+  <div>
+    <h3 class="text-gray-700 text-3xl font-medium">Service Level Objectives</h3>
+
+    <!-- SLO info cards -->
+    <div class="mt-4">
+      <div class="flex flex-wrap -mx-6">
+        <Card title="Services" iconColor="bg-indigo-600">
+          <svg
+            class="h-8 w-8 text-white"
+            viewBox="0 0 28 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.2 9.08889C18.2 11.5373 16.3196 13.5222 14 13.5222C11.6804 13.5222 9.79999 11.5373 9.79999 9.08889C9.79999 6.64043 11.6804 4.65556 14 4.65556C16.3196 4.65556 18.2 6.64043 18.2 9.08889Z"
+              fill="currentColor"
+            />
+            <path
+              d="M25.2 12.0444C25.2 13.6768 23.9464 15 22.4 15C20.8536 15 19.6 13.6768 19.6 12.0444C19.6 10.4121 20.8536 9.08889 22.4 9.08889C23.9464 9.08889 25.2 10.4121 25.2 12.0444Z"
+              fill="currentColor"
+            />
+            <path
+              d="M19.6 22.3889C19.6 19.1243 17.0927 16.4778 14 16.4778C10.9072 16.4778 8.39999 19.1243 8.39999 22.3889V26.8222H19.6V22.3889Z"
+              fill="currentColor"
+            />
+            <path
+              d="M8.39999 12.0444C8.39999 13.6768 7.14639 15 5.59999 15C4.05359 15 2.79999 13.6768 2.79999 12.0444C2.79999 10.4121 4.05359 9.08889 5.59999 9.08889C7.14639 9.08889 8.39999 10.4121 8.39999 12.0444Z"
+              fill="currentColor"
+            />
+            <path
+              d="M22.4 26.8222V22.3889C22.4 20.8312 22.0195 19.3671 21.351 18.0949C21.6863 18.0039 22.0378 17.9556 22.4 17.9556C24.7197 17.9556 26.6 19.9404 26.6 22.3889V26.8222H22.4Z"
+              fill="currentColor"
+            />
+            <path
+              d="M6.64896 18.0949C5.98058 19.3671 5.59999 20.8312 5.59999 22.3889V26.8222H1.39999V22.3889C1.39999 19.9404 3.2804 17.9556 5.59999 17.9556C5.96219 17.9556 6.31367 18.0039 6.64896 18.0949Z"
+              fill="currentColor"
+            />
+          </svg>
+        </Card>
+
+        <Card title="SLOs" iconColor="bg-orange-600">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 26"
+            stroke="currentColor"
+            class="h-8 w-8 text-white"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            />
+          </svg>
+        </Card>
+        <Card title="Alerts" iconColor="bg-pink-600">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 26"
+            class="h-8 w-8 text-white"
+          >
+            <path
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </Card>
+      </div>
+    </div>
+
+    <!-- SLOs 24h Section -->
+    <div class="text-lg text-gray-600 w-80">
+
+      <!-- Roller header -->
+      <div
+        class="px-5 py-3 my-2 flex items-center shadow-md rounded-lg bg-gray-900"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 22 22"
+          class="h-8 w-8"
+          stroke="white"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+
+        <span class="px-5 uppercase font-semibold text-gray-300">
+          Last 24 hours
+        </span>
+
+        <svg
+          v-if="!tog24"
+          v-on:click="tog24 = !tog24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 22 22"
+          class="h-6 w-6"
+          stroke="white"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+          />
+        </svg>
+        <svg
+          v-if="tog24"
+          v-on:click="tog24 = !tog24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 22 22"
+          class="h-6 w-6"
+          stroke="white"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20 12H4"
+          />
+        </svg>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-1 pb-2">
+
+        <!-- Active filters -->
+        <div
+          class="px-2 py-2 flex items-center text-sm text-gray-200 bg-gray-900 rounded-full"
+          v-for="(value, index) in params"
+          :key="index"
+        >
+          <span class="px-1 font-semibold">{{ index }}:</span>
+          <span class="pr-1">{{ value }}</span>
+          <svg v-on:click="delete params[index]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="red" class="h-4 w-4">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+
+        <!-- Add filter input -->
+        <div class="px-2 py-2 flex items-center text-sm text-gray-200 rounded-full"
+          :class="addFilter ? 'bg-gray-600' : 'bg-gray-900'"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="h-4 w-4" stroke="white">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+          <div v-if="addFilter"></div>
+          <input v-model="message" v-else class="border border-transparent bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Add filter ...">
+        </div>
+      </div>
+      <p v-for="column in columns" :key="column">Message is: {{ column }}</p>
+
+      <!-- SLO Data Table-->
+      <div
+        class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto"
+        :class="tog24 ? '' : 'hidden'"
+      >
+        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+          <table class="min-w-max w-full table-auto">
+            <thead>
+              <tr
+                class="bg-gray-900 text-gray-200 uppercase text-sm leading-normal"
+              >
+                <th class="px-5 py-4 text-left"></th>
+                <th class="text-left">Description</th>
+                <th class="px-5 py-4 pr-16 text-center">Measurement</th>
+                <th class="px-5 py-4 text-left">Name</th>
+                <th class="px-5 py-4 text-left">Window</th>
+                <th class="px-5 py-4 text-left">Metadata</th>
+                <th class="px-5 py-4 text-left">Actions</th>
+              </tr>
+            </thead>
+
+            <!-- Table body -->
+            <tbody class="text-gray-200 text-sm font-light">
+              <!-- Loading data indicator -->
+              <div
+                v-if="loading"
+                class="flex items-center px-3 py-3 text-gray-800"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="animate-spin h-8 w-8"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  />
+                </svg>
+                <span class="px-3 text-xl"> Loading data ... </span>
+              </div>
+
+              <tr
+                v-for="(i, index) in sloData"
+                :key="index"
+                class="border-b border-gray-600 bg-gray-800 hover:bg-gray-70"
+              >
+                <!-- Warning / Check -->
+                <td class="px-5 py-4">
+                  <svg
+                    v-if="i.alert"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-8 h-8 text-red-600"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <svg
+                    v-else
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    class="w-8 h-8 text-green-400"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </td>
+
+                <!-- SLO Description -->
+                <td class="text-left max-w-xs font-semibold">
+                  {{ i.slo_description }}
+                </td>
+
+                <!-- SLO -->
+                <td class="px-5 py-2">
+                  <SLOCard
+                    :sli="i.sli_measurement"
+                    :slo="i.slo_target"
+                    :gap="i.gap"
+                    :good_events="i.good_events_count"
+                    :bad_events="i.bad_events_count"
+                    :burn_rate="i.error_budget_burn_rate"
+                    :burn_rate_threshold="i.alerting_burn_rate_threshold"
+                    :window="i.window"
+                    :name="i.slo_name"
+                  />
+                </td>
+
+                <!-- SLO Name -->
+                <td class="px-5 py-2 text-left max-w-xs whitespace-pre">
+                  <div class="text-md flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      class="h-4 w-4 mr-1"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    <div>
+                      {{ i.slo_name }}
+                    </div>
+                  </div>
+                </td>
+                <td class="px-5 py-2 text-left max-w-xs whitespace-pre">
+                  <div class="text-md flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 22 22"
+                      class="h-4 w-4 mr-1"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <div>
+                      {{ fmtTime(i.window) }}
+                    </div>
+                  </div>
+                </td>
+
+                <!-- Metadata labels -->
+                <td class="px-5 py-4 text-xs">
+                  <div class="flex flex-wrap gap-2">
+                    <div
+                      class="px-1 py-1 flex items-center text-gray-200 bg-gray-500 bg-opacity-25 rounded-full"
+                    >
+                      <span class="px-1 font-semibold">service:</span>
+                      <span class="pr-1">{{ i.service_name }}</span>
+                    </div>
+                    <div
+                      class="px-1 py-1 flex items-center text-gray-200 bg-gray-500 bg-opacity-25 rounded-full"
+                    >
+                      <span class="px-1 font-semibold">feature:</span>
+                      <span class="pr-1">{{ i.feature_name }}</span>
+                    </div>
+                    <div
+                      class="px-1 py-1 flex items-center text-gray-200 bg-gray-500 bg-opacity-25 rounded-full"
+                      v-for="(element, index) in JSON.parse(i.metadata)"
+                      :key="index"
+                    >
+                      <span class="px-1 font-semibold">{{ element.key }}:</span>
+                      <span class="pr-1">{{ element.value }}</span>
+                    </div>
+                  </div>
+                </td>
+
+                <!-- Actions -->
+                <td class="px-5 py-4 text-xs">
+                  <div class="flex item-center justify-center">
+                    <div
+                      class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        ></path>
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div
+                      class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div
+                      class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div
+            v-if="!loading"
+            class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
+          >
+            <span
+              v-if="count < offset + limit"
+              class="text-xs xs:text-sm text-gray-900"
+            >
+              Showing {{ offset + 1 }} to {{ count }} of {{ count }} Entries
+            </span>
+            <span v-else class="text-xs xs:text-sm text-gray-900">
+              Showing {{ offset + 1 }} to {{ offset + limit }} of
+              {{ count }} Entries
+            </span>
+            <div class="inline-flex mt-2 xs:mt-0">
+              <button
+                v-if="count < offset + limit"
+                v-on:click="
+                  offset -= limit;
+                  fetchSloData();
+                "
+                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l"
+              >
+                Prev
+              </button>
+              <button
+                v-if="count > offset + limit"
+                v-on:click="
+                  offset += limit;
+                  fetchSloData();
+                "
+                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button
+        class="px-2 py-2 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 inline-flex items-center"
+      >
+        <svg
+          class="fill-current w-4 h-4 mr-2"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+          />
+        </svg>
+        <span>New SLO</span>
+      </button>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import Gauge from "../components/Gauge.vue";
+import SLOCard from "../components/SLOCard.vue";
+import Card from "../components/Card.vue";
+
+export default defineComponent({
+  data() {
+    return {
+      sloData: [],
+      offset: 0,
+      count: 0,
+      limit: 50,
+      loading: true,
+      tog24: true,
+      addFilter: false,
+      params: {},
+      message: '',
+      columns: []
+    };
+  },
+  mounted() {
+    this.params = this.$route.query;
+    this.fetchSloData();
+    this.getSloCount();
+  },
+  watch: {
+    params: {
+      handler(val){
+        console.log("Watcher triggered");
+        this.reloadQueryString()
+        this.fetchSloData()
+      },
+      deep: true
+    },
+    message: function(val){
+      fetch(`/api/slos/columns?search=${val}`)
+    }
+  },
+  methods: {
+    async fetchSloData() {
+      this.sloData = [];
+      this.loading = true;
+      var queryString = this.getQueryString();
+      fetch(`/api/slos/last_report?offset=${this.offset}&limit=${this.limit}&${queryString}`)
+        .then((res) => res.json())
+        .then((resJson) => {
+          this.sloData = resJson;
+          console.log(resJson[0])
+          this.loading = false;
+        });
+    },
+    async getSloCount() {
+      fetch("/api/slos/last_report_count")
+        .then((res) => res.json())
+        .then((resJson) => {
+          this.count = resJson[0].count;
+        });
+    },
+    fmtTime(seconds: number) {
+      var days = Math.floor(seconds / (24 * 60 * 60));
+      seconds -= days * (24 * 60 * 60);
+      var hours = Math.floor(seconds / (60 * 60));
+      seconds -= hours * (60 * 60);
+      var minutes = Math.floor(seconds / 60);
+      seconds -= minutes * 60;
+      var dDisplay = days > 0 ? days + "d" : "";
+      var hDisplay = hours > 0 ? hours + "h" : "";
+      var mDisplay = minutes > 0 ? minutes + "m" : "";
+      var sDisplay = seconds > 0 ? seconds + "s" : "";
+      return dDisplay + hDisplay + mDisplay + sDisplay;
+    },
+    getQueryString(){
+      return Object.keys(this.params).map(key => key + '=' + this.params[key]).join('&');
+    },
+    reloadQueryString() {
+      console.log("Within router")
+      history.pushState(
+        {},
+        null,
+        this.$route.path + '?' + this.getQueryString()
+      )
+    }
+  },
+  components: {
+    Gauge,
+    Card,
+    SLOCard,
+  },
+});
+</script>

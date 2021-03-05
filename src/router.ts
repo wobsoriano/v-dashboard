@@ -2,12 +2,13 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import Dashboard from "./views/Dashboard.vue";
 import Forms from "./views/Forms.vue";
-import Tables from "./views/Tables.vue";
 import UIElements from "./views/UIElements.vue";
 import Login from "./views/Login.vue";
 import Modal from "./views/Modal.vue";
 import Card from "./views/Card.vue";
 import Blank from "./views/Blank.vue";
+import SLOs from "./views/SLOs.vue";
+import Alerts from "./views/Alerts.vue";
 import NotFound from "./views/NotFound.vue";
 
 const routes: RouteRecordRaw[] = [
@@ -33,9 +34,9 @@ const routes: RouteRecordRaw[] = [
     component: Card,
   },
   {
-    path: "/tables",
-    name: "Tables",
-    component: Tables,
+    path: "/slos",
+    name: "SLOs",
+    component: SLOs,
   },
   {
     path: "/ui-elements",
@@ -46,12 +47,7 @@ const routes: RouteRecordRaw[] = [
     path: "/modal",
     name: "Modal",
     component: Modal,
-  },
-  {
-    path: "/blank",
-    name: "Blank",
-    component: Blank,
-  },
+  }
 ];
 
 const router = createRouter({

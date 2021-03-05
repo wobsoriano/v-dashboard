@@ -35,7 +35,7 @@
           </svg>
 
           <span class="text-white text-2xl mx-2 font-semibold"
-            >V-Dashboard</span
+            >SLO Dashboard</span
           >
         </div>
       </div>
@@ -63,6 +63,54 @@
           </svg>
 
           <span class="mx-4">Dashboard</span>
+        </router-link>
+
+        <router-link
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
+          :class="[$route.name === 'SLOs' ? activeClass : inactiveClass]"
+          to="/slos"
+        >
+          <svg
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7 3C6.44772 3 6 3.44772 6 4C6 4.55228 6.44772 5 7 5H13C13.5523 5 14 4.55228 14 4C14 3.44772 13.5523 3 13 3H7Z"
+              fill="currentColor"
+            />
+            <path
+              d="M4 7C4 6.44772 4.44772 6 5 6H15C15.5523 6 16 6.44772 16 7C16 7.55228 15.5523 8 15 8H5C4.44772 8 4 7.55228 4 7Z"
+              fill="currentColor"
+            />
+            <path
+              d="M2 11C2 9.89543 2.89543 9 4 9H16C17.1046 9 18 9.89543 18 11V15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15V11Z"
+              fill="currentColor"
+            />
+          </svg>
+
+          <span class="mx-4">SLOs</span>
+        </router-link>
+
+        <router-link
+          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
+          :class="[$route.name === 'Alerts' ? activeClass : inactiveClass]"
+          to="/alerts"
+        >
+          <svg
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              fill="currentColor"
+            />
+          </svg>
+
+          <span class="mx-4">Alerts</span>
         </router-link>
 
         <router-link
@@ -95,34 +143,6 @@
           </svg>
 
           <span class="mx-4">UI Elements</span>
-        </router-link>
-
-        <router-link
-          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
-          :class="[$route.name === 'Tables' ? activeClass : inactiveClass]"
-          to="/tables"
-        >
-          <svg
-            class="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7 3C6.44772 3 6 3.44772 6 4C6 4.55228 6.44772 5 7 5H13C13.5523 5 14 4.55228 14 4C14 3.44772 13.5523 3 13 3H7Z"
-              fill="currentColor"
-            />
-            <path
-              d="M4 7C4 6.44772 4.44772 6 5 6H15C15.5523 6 16 6.44772 16 7C16 7.55228 15.5523 8 15 8H5C4.44772 8 4 7.55228 4 7Z"
-              fill="currentColor"
-            />
-            <path
-              d="M2 11C2 9.89543 2.89543 9 4 9H16C17.1046 9 18 9.89543 18 11V15C18 16.1046 17.1046 17 16 17H4C2.89543 17 2 16.1046 2 15V11Z"
-              fill="currentColor"
-            />
-          </svg>
-
-          <span class="mx-4">Tables</span>
         </router-link>
 
         <router-link
@@ -175,20 +195,6 @@
           </svg>
 
           <span class="mx-4">Modal</span>
-        </router-link>
-
-        <router-link
-          class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
-          :class="[$route.name === 'Blank' ? activeClass : inactiveClass]"
-          to="/blank"
-        >
-          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
-            />
-          </svg>
-
-          <span class="mx-4">Blank</span>
         </router-link>
       </nav>
     </div>
