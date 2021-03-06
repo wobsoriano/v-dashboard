@@ -74,7 +74,7 @@
       </div>
     </div>
 
-    <!-- SLOs 24h Section -->
+    <!-- "Last 24 Hours" section -->
     <div class="text-lg text-gray-600 w-80">
 
       <!-- Roller header -->
@@ -101,8 +101,8 @@
         </span>
 
         <svg
-          v-if="!tog24"
-          v-on:click="tog24 = !tog24"
+          v-if="!toggleLast24Hours"
+          v-on:click="toggleLast24Hours = !toggleLast24Hours"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 22 22"
@@ -117,8 +117,8 @@
           />
         </svg>
         <svg
-          v-if="tog24"
-          v-on:click="tog24 = !tog24"
+          v-if="toggleLast24Hours"
+          v-on:click="toggleLast24Hours = !toggleLast24Hours"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 22 22"
@@ -134,62 +134,133 @@
         </svg>
       </div>
 
-      <!-- Filters -->
-      <div class="flex flex-wrap gap-1 pb-2">
-
-        <!-- Active filters -->
-        <div
-          class="px-2 py-2 flex items-center text-sm text-gray-200 bg-gray-900 rounded-full"
-          v-for="(value, index) in params"
-          :key="index"
-        >
-          <span class="px-1 font-semibold">{{ index }}:</span>
-          <span class="pr-1">{{ value }}</span>
-          <svg v-on:click="delete params[index]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="red" class="h-4 w-4">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </div>
-
-        <!-- Add filter input -->
-        <div class="px-2 py-2 flex items-center text-sm text-gray-200 rounded-full"
-          :class="addFilter ? 'bg-gray-600' : 'bg-gray-900'"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22" class="h-4 w-4" stroke="white">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-          </svg>
-          <div v-if="addFilter"></div>
-          <input v-model="message" v-else class="border border-transparent bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Add filter ...">
-        </div>
-      </div>
-      <p v-for="column in columns" :key="column">Message is: {{ column }}</p>
-
       <!-- SLO Data Table-->
       <div
         class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto"
-        :class="tog24 ? '' : 'hidden'"
+        :class="toggleLast24Hours ? '' : 'hidden'"
       >
-        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+        <!-- Filters -->
+        <div class="flex flex-wrap gap-1 pb-2">
+
+          <!-- Add filter input -->
+          <div class="flex flex-wrap gap-1">
+            <div class="justify-center relative text-gray-500">
+              <!-- Input box -->
+              <div
+                class="px-2 py-2 flex items-center text-sm text-gray-200 bg-gray-900 rounded-full"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 22 22"
+                  class="h-4 w-4"
+                  stroke="white"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+                <input
+                  v-model="input"
+                  class="pl-2 border border-transparent bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                  placeholder="Add filter ..."
+                />
+              </div>
+
+              <!-- Context menu for filter keys -->
+              <div class="text-gray-500 text-xs text-semibold">
+                <ul class="px-5 absolute">
+                  <li
+                    v-on:click="
+                      enableFilterKey = false;
+                      filterKeyResponse = [];
+                      input = choice;
+                    "
+                    v-for="choice in filterKeyResponse"
+                    :key="choice"
+                    class="px-2 py-2 bg-gray-900 cursor-pointer border-t-2 border-gray-800 hover:bg-yellow-50 hover:text-red-500"
+                  >
+                    {{ choice }}
+                  </li>
+                </ul>
+
+                <!-- Context menu for filter values -->
+                <ul class="px-5 absolute">
+                  <li
+                    v-on:click="
+                      params[input] = choice;
+                      filterValueResponse = [];
+                      input = '';
+                      enableFilterKey = true;
+                    "
+                    v-for="choice in filterValueResponse"
+                    :key="choice"
+                    class="px-2 py-2 bg-gray-900 cursor-pointer border-t-2 border-gray-800 hover:bg-yellow-50 hover:text-red-500"
+                  >
+                    {{ choice }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active filters -->
+          <div class="flex flex-wrap gap-1 pb-2">
+            <div
+              class="px-2 py-2 flex items-center text-sm text-gray-200 bg-gray-900 rounded-full"
+              v-for="(value, index) in params"
+              :key="index"
+            >
+              <span class="px-1 font-semibold">{{ index }}:</span>
+              <span class="pr-1">{{ value }}</span>
+              <svg
+                v-on:click="delete params[index]"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="red"
+                class="h-4 w-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden bg-gray-800">
           <table class="min-w-max w-full table-auto">
+
+            <!-- Table headers -->
             <thead>
               <tr
                 class="bg-gray-900 text-gray-200 uppercase text-sm leading-normal"
               >
-                <th class="px-5 py-4 text-left"></th>
-                <th class="text-left">Description</th>
-                <th class="px-5 py-4 pr-16 text-center">Measurement</th>
-                <th class="px-5 py-4 text-left">Name</th>
-                <th class="px-5 py-4 text-left">Window</th>
-                <th class="px-5 py-4 text-left">Metadata</th>
-                <th class="px-5 py-4 text-left">Actions</th>
+                <th class="px-2 py-4 text-left"></th>
+                <th class="px-2 py-4 text-left">Description</th>
+                <th class="px-2 py-4 text-left">Measurement</th>
+                <th class="px-2 py-4 text-left">Name</th>
+                <th class="px-2 py-4 text-left">Window</th>
+                <th class="px-2 py-4 text-left">Metadata</th>
+                <th class="px-2 py-4 text-left">Actions</th>
               </tr>
             </thead>
 
             <!-- Table body -->
             <tbody class="text-gray-200 text-sm font-light">
+
               <!-- Loading data indicator -->
               <div
                 v-if="loading"
-                class="flex items-center px-3 py-3 text-gray-800"
+                class="flex items-center px-3 py-3 m-3 text-gray-200 bg-gray-800"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -207,21 +278,22 @@
                 </svg>
                 <span class="px-3 text-xl"> Loading data ... </span>
               </div>
-
+              
+              <!-- Rows -->
               <tr
                 v-for="(i, index) in sloData"
                 :key="index"
                 class="border-b border-gray-600 bg-gray-800 hover:bg-gray-70"
               >
                 <!-- Warning / Check -->
-                <td class="px-5 py-4">
+                <td class="px-4">
                   <svg
                     v-if="i.alert"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    class="w-8 h-8 text-red-600"
+                    class="w-10 h-10 text-red-600"
                   >
                     <path
                       stroke-linecap="round"
@@ -236,7 +308,7 @@
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    class="w-8 h-8 text-green-400"
+                    class="w-10 h-10 text-green-400"
                   >
                     <path
                       stroke-linecap="round"
@@ -248,12 +320,12 @@
                 </td>
 
                 <!-- SLO Description -->
-                <td class="text-left max-w-xs font-semibold">
+                <td class="px-2 text-left font-semibold max-w-xs">
                   {{ i.slo_description }}
                 </td>
 
                 <!-- SLO -->
-                <td class="px-5 py-2">
+                <td class="px-2">
                   <SLOCard
                     :sli="i.sli_measurement"
                     :slo="i.slo_target"
@@ -268,7 +340,7 @@
                 </td>
 
                 <!-- SLO Name -->
-                <td class="px-5 py-2 text-left max-w-xs whitespace-pre">
+                <td class="px-2 text-left whitespace-pre max-w-xs">
                   <div class="text-md flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -284,12 +356,14 @@
                         d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                       />
                     </svg>
-                    <div>
+                    <div v-on:click="params['slo_name'] = i.slo_name">
                       {{ i.slo_name }}
                     </div>
                   </div>
                 </td>
-                <td class="px-5 py-2 text-left max-w-xs whitespace-pre">
+
+                <!-- Window -->
+                <td class="px-2 text-left max-w-xs whitespace-pre">
                   <div class="text-md flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -305,22 +379,24 @@
                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <div>
+                    <div v-on:click="params['window'] = fmtTime(i.window)">
                       {{ fmtTime(i.window) }}
                     </div>
                   </div>
                 </td>
 
                 <!-- Metadata labels -->
-                <td class="px-5 py-4 text-xs">
+                <td class="px-2 py-4 text-xs max-w-xs">
                   <div class="flex flex-wrap gap-2">
                     <div
+                      v-on:click="params['service_name'] = i.service_name"
                       class="px-1 py-1 flex items-center text-gray-200 bg-gray-500 bg-opacity-25 rounded-full"
                     >
                       <span class="px-1 font-semibold">service:</span>
                       <span class="pr-1">{{ i.service_name }}</span>
                     </div>
                     <div
+                      v-on:click="params['feature_name'] = i.feature_name"
                       class="px-1 py-1 flex items-center text-gray-200 bg-gray-500 bg-opacity-25 rounded-full"
                     >
                       <span class="px-1 font-semibold">feature:</span>
@@ -330,6 +406,7 @@
                       class="px-1 py-1 flex items-center text-gray-200 bg-gray-500 bg-opacity-25 rounded-full"
                       v-for="(element, index) in JSON.parse(i.metadata)"
                       :key="index"
+                      v-on:click="params['metadata.' + element.key] = element.value"
                     >
                       <span class="px-1 font-semibold">{{ element.key }}:</span>
                       <span class="pr-1">{{ element.value }}</span>
@@ -338,7 +415,7 @@
                 </td>
 
                 <!-- Actions -->
-                <td class="px-5 py-4 text-xs">
+                <td class="px-2 text-xs">
                   <div class="flex item-center justify-center">
                     <div
                       class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
@@ -402,38 +479,47 @@
               </tr>
             </tbody>
           </table>
+
+          <!-- Table footer -->
           <div
             v-if="!loading"
-            class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
+            class="px-5 py-5 bg-gray-800 text-gray-200 flex flex-col xs:flex-row items-center xs:justify-between"
           >
+
+            <!-- Table footer text -->
             <span
               v-if="count < offset + limit"
-              class="text-xs xs:text-sm text-gray-900"
+              class="text-xs xs:text-sm"
             >
-              Showing {{ offset + 1 }} to {{ count }} of {{ count }} Entries
+              Showing query results {{ offset + 1 }} to {{ offset + sloData.length }}
             </span>
-            <span v-else class="text-xs xs:text-sm text-gray-900">
-              Showing {{ offset + 1 }} to {{ offset + limit }} of
-              {{ count }} Entries
+            <span v-else class="text-xs xs:text-sm">
+              Showing query results {{ offset + 1 }} to {{ offset + sloData.length }}
             </span>
+
+            <!-- Footer buttons -->
             <div class="inline-flex mt-2 xs:mt-0">
+              
+              <!-- Previous button -->
               <button
-                v-if="count < offset + limit"
+                v-if="offset > 0"
                 v-on:click="
                   offset -= limit;
                   fetchSloData();
                 "
-                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l"
+                class="text-sm bg-gray-800 hover:bg-gray-600 border font-semibold px-4 rounded-full"
               >
-                Prev
+                Previous
               </button>
+
+              <!-- Next button -->
               <button
-                v-if="count > offset + limit"
+                v-else
                 v-on:click="
                   offset += limit;
                   fetchSloData();
                 "
-                class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r"
+                class="text-sm bg-gray-800 hover:bg-gray-600 border font-semibold py-2 px-4 rounded-full"
               >
                 Next
               </button>
@@ -442,6 +528,8 @@
         </div>
       </div>
     </div>
+
+    <!-- New SLO button -->
     <div>
       <button
         class="px-2 py-2 bg-blue-600 rounded-md text-white font-medium tracking-wide hover:bg-blue-500 inline-flex items-center"
@@ -479,11 +567,13 @@ export default defineComponent({
       count: 0,
       limit: 50,
       loading: true,
-      tog24: true,
-      addFilter: false,
+      toggleLast24Hours: true,
       params: {},
-      message: '',
-      columns: []
+      input: "",
+      enableFilterKey: true,
+      filterKeyResponse: [],
+      filterValueResponse: [],
+      columns: [],
     };
   },
   mounted() {
@@ -493,27 +583,50 @@ export default defineComponent({
   },
   watch: {
     params: {
-      handler(val){
+      handler(val) {
         console.log("Watcher triggered");
-        this.reloadQueryString()
-        this.fetchSloData()
+        this.reloadQueryString();
+        this.fetchSloData();
       },
-      deep: true
+      deep: true,
     },
-    message: function(val){
-      fetch(`/api/slos/columns?search=${val}`)
-    }
+    input: function (val) {
+      if (val == "") {
+        this.enableFilterKey = true;
+        return;
+      }
+      if (this.enableFilterKey) {
+        fetch(`/api/slos/keys?q=${val}`)
+          .then((res) => res.json())
+          .then((resJson) => {
+            this.filterKeyResponse = resJson;
+            console.log(resJson);
+          });
+      } else {
+        fetch(`/api/slos/values?q=${val}`)
+          .then((res) => res.json())
+          .then((resJson) => {
+            if (val == "window") {
+              resJson = resJson.map(this.fmtTime);
+            }
+            this.filterValueResponse = resJson;
+            console.log(resJson);
+          });
+      }
+    },
   },
   methods: {
     async fetchSloData() {
       this.sloData = [];
       this.loading = true;
       var queryString = this.getQueryString();
-      fetch(`/api/slos/last_report?offset=${this.offset}&limit=${this.limit}&${queryString}`)
+      fetch(
+        `/api/slos/last_report?offset=${this.offset}&limit=${this.limit}&${queryString}`
+      )
         .then((res) => res.json())
         .then((resJson) => {
           this.sloData = resJson;
-          console.log(resJson[0])
+          console.log(resJson[0]);
           this.loading = false;
         });
     },
@@ -537,17 +650,19 @@ export default defineComponent({
       var sDisplay = seconds > 0 ? seconds + "s" : "";
       return dDisplay + hDisplay + mDisplay + sDisplay;
     },
-    getQueryString(){
-      return Object.keys(this.params).map(key => key + '=' + this.params[key]).join('&');
+    getQueryString() {
+      return Object.keys(this.params)
+        .map((key) => key + "=" + this.params[key])
+        .join("&");
     },
     reloadQueryString() {
-      console.log("Within router")
+      console.log("Within router");
       history.pushState(
         {},
         null,
-        this.$route.path + '?' + this.getQueryString()
-      )
-    }
+        this.$route.path + "?" + this.getQueryString()
+      );
+    },
   },
   components: {
     Gauge,

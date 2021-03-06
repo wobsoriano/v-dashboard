@@ -3,23 +3,21 @@
   <!-- Title -->
   <div class="text-xs font-semibold">{{ title }}</div>
   <div class="flex items-center">
-
     <!-- Main gauge div -->
     <div
       class="flex items-center"
       :class="change > 0 ? 'text-green-400' : 'text-orange-600'"
     >
-    
       <!-- Icon -->
       <slot></slot>
 
       <!-- Metric -->
-      <div class="text-xl font-semibold">
+      <div class="text-2xl font-semibold">
         {{ value }}{{ unit }}
       </div>
 
       <!-- Metric footer / comparison -->
-      <div class="flex mt-1 text-xs font-medium">
+      <div class="flex mt-1 text-sm">
 
         <!-- Target -->
         <span class="px-1 text-gray-400" v-if="showTarget">
