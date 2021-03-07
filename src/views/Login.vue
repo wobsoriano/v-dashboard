@@ -29,7 +29,7 @@
           <span class="text-gray-700 text-sm">Email</span>
           <input
             type="email"
-            class="form-input mt-1 block w-full rounded-md focus:border-indigo-600"
+            class="mt-1 block w-full rounded-md focus:border-indigo-600"
             v-model="email"
           />
         </label>
@@ -38,7 +38,7 @@
           <span class="text-gray-700 text-sm">Password</span>
           <input
             type="password"
-            class="form-input mt-1 block w-full rounded-md focus:border-indigo-600"
+            class="mt-1 block w-full rounded-md focus:border-indigo-600"
             v-model="password"
           />
         </label>

@@ -8,7 +8,7 @@
 
       <div class="mt-4">
         <div
-          class="rounded-md bg-white py-4 px-4 overflow-x-auto whitespace-no-wrap"
+          class="rounded-md bg-white py-4 px-4 overflow-x-auto whitespace-nowrap"
         >
           <div
             class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3"
