@@ -1,51 +1,37 @@
-# V-Dashboard
+# SRE Dashboard
 
-Dashboard starter template built with Vite, Vue 3, Tailwind CSS and TypeScript.
+SRE Dashboard is a dashboard for viewing, editing and analyzing Service Level
+Objectives. It works in tandem with the `slo-generator` and requires the 
+`Bigquery` exporter to be setup as it queries all data from BigQuery. 
 
-Copied from https://github.com/tailwindcomponents/dashboard and converted to Vue.
+SRE Dashboard is useful for both SRE teams and application teams to get a feel 
+of where they're at in their SRE journey, SLO adoption and SLO targets.
 
-## Demo
+## Backend
+SRE Dashboard backend is written in Flask (Python). It is a simple layer to make
+queries to BigQuery.
 
-https://v-dashboard.vercel.app/
-
-![Demo](https://i.imgur.com/RqXxEHL.gif)
-
-Note if you have access to [Tailwind UI](https://tailwindui.com), you can follow the following steps to add it:
-
-1. Install `@tailwindcss/ui`:
-
-```sh
-yarn add @tailwindcss/ui
+### Project setup
+```
+source .env
+flask run
 ```
 
-2. Add the plugin in `tailwind.config.js` without changing anything else:
+## Frontend
+SRE Dashboard frontend is written in VueJS for the UI framework, and Tailwind 
+CSS for the HTML / CSS styling.
 
-```js
-// tailwind.config.js
-module.exports = {
-  // ...
-  // rest of the config
-  plugins: [require('@tailwindcss/ui')],
-}
-```
-
-## Project setup
+### Project setup
 ```
 yarn
 ```
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 ```
 yarn dev
 ```
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
 ```
 yarn build
 ```
-
-## License & copyright
-
-© Robert C Soriano
-
-Licensed under the [MIT License](LICENSE.md).

@@ -1,19 +1,14 @@
 from flask import Flask, jsonify, Response, request
-from google.cloud import bigquery
+import constants
 import json
+import os
+import time
+import utils
 
+utils.setup_logging()
 app = Flask(__name__)
-client = bigquery.Client()
+app.config['JSON_SORT_KEYS'] = False
 
-TABLE_ID = 'rnm-shared-monitoring.slos.last_report'
-FILTER_KEYS = [
-    "service_name",
-    "feature_name",
-    "slo_name",
-    "alert",
-    "window",
-    "metadata",
-]
 
 @app.route('/slos/keys')
 def get_columns():
@@ -28,8 +23,8 @@ def get_columns():
     q = request.args.get('q')
     if not q:
         return jsonify([])
-    result = [c for c in FILTER_KEYS if q in c]
-    app.logger.info(result)
+    result = [c for c in constants.FILTER_KEYS if q in c]
+    # app.logger.debug(result)
     return jsonify(result)
 
 
@@ -50,19 +45,20 @@ def query_distinct_fields():
     if column == 'metadata':
         column = 'metadata.key'
         query = f"""
-        SELECT DISTINCT(metadata.key) FROM `{TABLE_ID}`, UNNEST(metadata) as metadata
+        SELECT DISTINCT(metadata.key) FROM `{constants.TABLE_ID}`, UNNEST(metadata) as metadata
         """
-        result = run_bq_query(query)
+        result = utils.run_bq_query(query)
         result = [elem["key"] for elem in json.loads(result)]
     else:
         query = f"""
-        SELECT DISTINCT({column}) FROM `{TABLE_ID}`
+        SELECT DISTINCT({column}) FROM `{constants.TABLE_ID}`
         """
-        app.logger.info(query)
-        result = run_bq_query(query)
+        # app.logger.info(query)
+        result = utils.run_bq_query(query)
         result = [elem[q] for elem in json.loads(result)]
-    app.logger.info(result)
+    # app.logger.debug(result)
     return jsonify(result)
+
 
 @app.route('/slos/last_report')
 def query_last_report():
@@ -78,7 +74,7 @@ def query_last_report():
     """
     offset = request.args.get('offset', 0)
     limit = request.args.get('limit', 100)
-    where_clause = build_where_clause(request.args)
+    where_clause = utils.build_where_clause(request.args)
     query = f"""
     SELECT
     AVG(sli_measurement) as sli_measurement,
@@ -95,105 +91,82 @@ def query_last_report():
     TO_JSON_STRING(metadata) as metadata,
     AVG(error_budget_burn_rate) as error_budget_burn_rate,
     AVG(alerting_burn_rate_threshold) as alerting_burn_rate_threshold,
-    FROM `{TABLE_ID}`, UNNEST(metadata) as m
+    FROM `{constants.TABLE_ID}`, UNNEST(metadata) as m
     {where_clause}
     GROUP BY service_name,feature_name,slo_name,slo_description,`window`,metadata
     ORDER BY alert DESC, error_budget_burn_rate DESC
     LIMIT {limit} OFFSET {offset}
     """
-    app.logger.info(query)
-    result = run_bq_query(query)
-    app.logger.info(result)
-    return Response(result, mimetype='application/json')
+    # app.logger.info(query)
+    result = utils.run_bq_query(query)
+    # app.logger.debug(result)
+    return result
 
 
 @app.route('/slos/last_report_count')
 def count_last_report():
     query = f"""
-    SELECT COUNT(*) AS count FROM `{TABLE_ID}`
+    SELECT COUNT(*) AS count FROM `{constants.TABLE_ID}`
     """
-    result = run_bq_query(query)
-    app.logger.info(result)
-    return Response(result, mimetype='application/json')
+    result = utils.run_bq_query(query)
+    # app.logger.debug(result)
+    return result
 
 
 @app.route('/slos/all_reports')
 def query_dataset():
-    query_job = client.list_rows(TABLE_ID, max_results=50)
+    query_job = utils.bq_client.list_rows(constants.TABLE_ID, max_results=50)
     df = query_job.to_dataframe()
     result = df.to_json(orient='records')
-    app.logger.info(result)
-    return Response(result, mimetype='application/json')
+    # app.logger.debug(result)
+    return result
 
 
-def build_where_clause(filters):
-    """Build WHERE clause to append to an SQL query.
-    
-    Args:
-        filters (dict): Dict of filters to add to the query.
-
-    Returns:
-        str: WHERE clause to add to an SQL query.
-    """
-    selectors = []
-    where_clause = ""
-    for key, value in request.args.items():
-        if key == 'window':
-            window = parse_window(value)
-            selectors.append(f'`{key}` = {window}')
-        elif key.startswith('metadata.'):
-            key = key.replace('metadata.', '')
-            selectors.append(f' m.key = "{key}" AND m.value = "{value}"')
-        elif key not in FILTER_KEYS:
-            continue
-        else:
-            selectors.append(f'{key} = "{value}"')
-    if selectors:
-        selector_string = ' AND '.join(selectors)
-        app.logger.info(selector_string)
-        where_clause = f"WHERE {selector_string}"
-    return where_clause
+@app.route('/slo/<name>', methods=['GET'])
+def get_slo_config(name):
+    return utils.get_slo_config(name)
 
 
-def run_bq_query(query):
-    """Run a BigQuery query job and return a JSON result.
+@app.route('/slo/<name>', methods=['POST'])
+def update_slo_config(name):
+    data = request.get_json()
+    # app.logger.info(data)
+    success, error = utils.update_slo_config(name, data)
+    return {
+        "success": success,
+        "errorMessage":
+            f"There was an error while updating the configuration on disk. "
+            f"Error message: {error}",
+        "data": utils.get_slo_config(name)
+    }
 
-    Args:
-        query (string): BigQuery query string.
-    
-    Returns:
-        list: List of records matching the query.
-    """
-    query_job = client.query(query)
-    df = query_job.to_dataframe()
-    return df.to_json(orient='records')
+
+@app.route('/slo/<name>/diff', methods=['GET'])
+def get_slo_staging(name):
+    path = utils.get_slo_config(name)['_path']
+    diffs = utils.get_current_diff(constants.SLO_REPO_PATH)
+    rel_path = os.path.relpath(path, constants.SLO_REPO_PATH)
+    # app.logger.info(rel_path)
+    # app.logger.info(diffs)
+    return {"diff": diffs.get(rel_path)}
 
 
-def parse_window(time):
-    """Convert a string in the format 'Wd Xh Ym Zs' into an int in seconds.
+@app.route('/slo/<name>/test', methods=['POST'])
+def test_slo(name):
+    slo_config_path = request.get_json()['_path']
 
-    Args:
-        time (str): A string in the format 'Wd Xh Ym Zs'.
-
-    Returns:
-        int: Number of seconds.
-    """
-    time_seconds = 0
-    if isinstance(time, int):  # time already converted
-        return time
-    if 'd' in time:
-        split = time.split('d')
-        time_seconds += int(split[0]) * 24 * 60 * 60
-        time = split[-1]
-    if 'h' in time:
-        split = time.split('h')
-        time_seconds += int(split[0]) * 60 * 60
-        time = split[-1]
-    if 'm' in time:
-        split = time.split('m')
-        time_seconds += int(split[0]) * 60
-        time = split[-1]
-    if 's' in time:
-        split = time.split('s')
-        time_seconds += int(split[0])
-    return time_seconds
+    ebp_config_path = os.path.abspath(constants.ERROR_BUDGET_POLICY_PATH)
+    try:
+        from slo_generator.utils import parse_config
+        from slo_generator.compute import compute
+        slo_config = parse_config(slo_config_path)
+        ebp_config = parse_config(ebp_config_path)
+        timestamp = time.time()
+        reports = compute(slo_config,
+                          ebp_config,
+                          timestamp=timestamp,
+                          do_export=False)
+        return {"success": True, "data": reports}
+    except Exception as e:
+        app.logger.exception(e)
+        return {"success": False, "errorMessage": f"Test failed: {repr(e)}"}

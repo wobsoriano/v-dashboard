@@ -41,7 +41,7 @@
       </div>
 
       <nav class="mt-10">
-        <router-link
+        <!-- <router-link
           class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Dashboard' ? activeClass : inactiveClass]"
           to="/dashboard"
@@ -63,7 +63,7 @@
           </svg>
 
           <span class="mx-4">Dashboard</span>
-        </router-link>
+        </router-link> -->
 
         <router-link
           class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
@@ -113,7 +113,7 @@
           <span class="mx-4">Alerts</span>
         </router-link>
 
-        <router-link
+        <!-- <router-link
           class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'UIElements' ? activeClass : inactiveClass]"
           to="/ui-elements"
@@ -143,9 +143,9 @@
           </svg>
 
           <span class="mx-4">UI Elements</span>
-        </router-link>
+        </router-link> -->
 
-        <router-link
+        <!-- <router-link
           class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Forms' ? activeClass : inactiveClass]"
           to="/forms"
@@ -162,9 +162,9 @@
           </svg>
 
           <span class="mx-4">Forms</span>
-        </router-link>
+        </router-link> -->
 
-        <router-link
+        <!-- <router-link
           class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Cards' ? activeClass : inactiveClass]"
           to="/cards"
@@ -181,9 +181,9 @@
           </svg>
 
           <span class="mx-4">Cards</span>
-        </router-link>
+        </router-link> -->
 
-        <router-link
+        <!-- <router-link
           class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4"
           :class="[$route.name === 'Modal' ? activeClass : inactiveClass]"
           to="/modal"
@@ -195,7 +195,7 @@
           </svg>
 
           <span class="mx-4">Modal</span>
-        </router-link>
+        </router-link> -->
       </nav>
     </div>
   </div>

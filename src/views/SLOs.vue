@@ -364,7 +364,7 @@
 
                 <!-- Window -->
                 <td class="px-2 text-left max-w-xs whitespace-pre">
-                  <div class="text-md flex items-center">
+                  <div v-on:click="params['window'] = fmtTime(i.window)" class="text-md flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -379,7 +379,7 @@
                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                       />
                     </svg>
-                    <div v-on:click="params['window'] = fmtTime(i.window)">
+                    <div>
                       {{ fmtTime(i.window) }}
                     </div>
                   </div>
@@ -417,10 +417,13 @@
                 <!-- Actions -->
                 <td class="px-2 text-xs">
                   <div class="flex item-center justify-center">
+                    
+                    <!-- View icon -->
                     <div
                       class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                     >
                       <svg
+                        v-on:click="this.viewSLO(i)"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -440,10 +443,13 @@
                         ></path>
                       </svg>
                     </div>
+
+                    <!-- Edit icon -->
                     <div
                       class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                     >
                       <svg
+                        v-on:click="this.editSLO(i)"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -457,10 +463,13 @@
                         ></path>
                       </svg>
                     </div>
+
+                    <!-- Remove icon -->
                     <div
                       class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                     >
                       <svg
+                        v-on:click="this.removeSLO(i)"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -555,7 +564,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Gauge from "../components/Gauge.vue";
 import SLOCard from "../components/SLOCard.vue";
 import Card from "../components/Card.vue";
 
@@ -574,7 +582,7 @@ export default defineComponent({
       filterKeyResponse: [],
       filterValueResponse: [],
       columns: [],
-    };
+    }
   },
   mounted() {
     this.params = this.$route.query;
@@ -637,6 +645,22 @@ export default defineComponent({
           this.count = resJson[0].count;
         });
     },
+    viewSLO(sloData: Object){
+      console.log(sloData)
+      this.$router.push({name: 'SLO View', params: sloData})
+    },
+    editSLO(sloData: Object){
+      console.log(sloData)
+      var name = this.getSLOName(sloData)
+      this.$router.push({path: `/slo/${name}/edit`})
+    },
+    removeSLO(sloData: Object){
+      console.log(sloData)
+      // this.$router.push({name: '/slo/remove', params: sloData})
+    },
+    getSLOName(sloData: Object){
+      return sloData.service_name + '-' + sloData.feature_name + '-' + sloData.slo_name
+    },
     fmtTime(seconds: number) {
       var days = Math.floor(seconds / (24 * 60 * 60));
       seconds -= days * (24 * 60 * 60);
@@ -665,7 +689,6 @@ export default defineComponent({
     },
   },
   components: {
-    Gauge,
     Card,
     SLOCard,
   },

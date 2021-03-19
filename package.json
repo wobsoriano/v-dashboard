@@ -6,9 +6,13 @@
     "build": "cross-env NODE_ENV=production vite build"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.2.1",
+    "add": "^2.0.6",
     "tailwindcss": "^1.9.6",
     "vue": "next",
-    "vue-router": "^4.0.0-beta.13"
+    "vue-router": "^4.0.0-beta.13",
+    "vuetify": "^2.4.7",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
