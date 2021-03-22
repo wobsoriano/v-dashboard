@@ -134,6 +134,11 @@ export default defineComponent({
       sloConfig.update(this.name, this.data).then((resJson) => {
         this.configTested = false;
         this.configTestErrorMessage = ""
+        this.configTestSuccessMessage = ""
+        this.configTestErrorMessage = ""
+        this.configTestTraceback = ""
+        this.configTestData = []
+        this.configTestLoading = true;
         if (resJson.success) {
           this.formSavedOnDisk = true
           this.formSavedSuccess = true
@@ -147,11 +152,6 @@ export default defineComponent({
       });
     },
     async testConfig() {
-      this.configTestSuccessMessage = ""
-      this.configTestErrorMessage = ""
-      this.configTestTraceback = ""
-      this.configTestData = []
-      this.configTestLoading = true;
       sloConfig.test(this.name, this.data._path).then((resJson) => {
         this.configTestLoading = false;
         if (resJson.success) {
