@@ -39,7 +39,7 @@
           <div class="flex" v-for="step in configTestData" :key="step.name">
             <div>{{ fmtTime(step.window) }}</div>
             <SLOCard
-              class="flex"
+              class="flex gap-5"
               :sli="step.sli_measurement"
               :slo="step.slo_target"
               :gap="step.gap"
@@ -131,9 +131,6 @@ export default defineComponent({
   },
   methods: {
     async saveConfig() {
-      this.configTestErrorMessage = ""
-      this.configTestTraceback = ""
-      this.configTestLoading = true
       sloConfig.update(this.name, this.data).then((resJson) => {
         this.configTested = false;
         this.configTestErrorMessage = ""
@@ -150,6 +147,10 @@ export default defineComponent({
       });
     },
     async testConfig() {
+      this.configTestSuccessMessage = ""
+      this.configTestErrorMessage = ""
+      this.configTestTraceback = ""
+      this.configTestData = []
       this.configTestLoading = true;
       sloConfig.test(this.name, this.data._path).then((resJson) => {
         this.configTestLoading = false;
