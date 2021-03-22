@@ -136,7 +136,7 @@ def build_where_clause(filters):
         elif key.startswith('metadata.'):
             key = key.replace('metadata.', '')
             selectors.append(f' m.key = "{key}" AND m.value = "{value}"')
-        elif key not in constants.FILTER_KEYS:
+        elif key not in constants.BIGQUERY_FILTER_KEYS:
             continue
         else:
             selectors.append(f'{key} = "{value}"')

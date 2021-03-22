@@ -3,3 +3,5 @@ node_modules
 dist
 *.local
 yarn-error.log
+*.pyc
+.env

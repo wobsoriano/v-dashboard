@@ -23,7 +23,7 @@ def get_columns():
     q = request.args.get('q')
     if not q:
         return jsonify([])
-    result = [c for c in constants.FILTER_KEYS if q in c]
+    result = [c for c in constants.BIGQUERY_FILTER_KEYS if q in c]
     # app.logger.debug(result)
     return jsonify(result)
 
@@ -45,13 +45,13 @@ def query_distinct_fields():
     if column == 'metadata':
         column = 'metadata.key'
         query = f"""
-        SELECT DISTINCT(metadata.key) FROM `{constants.TABLE_ID}`, UNNEST(metadata) as metadata
+        SELECT DISTINCT(metadata.key) FROM `{constants.BIGQUERY_LAST_REPORT_TABLE_ID}`, UNNEST(metadata) as metadata
         """
         result = utils.run_bq_query(query)
         result = [elem["key"] for elem in json.loads(result)]
     else:
         query = f"""
-        SELECT DISTINCT({column}) FROM `{constants.TABLE_ID}`
+        SELECT DISTINCT({column}) FROM `{constants.BIGQUERY_LAST_REPORT_TABLE_ID}`
         """
         # app.logger.info(query)
         result = utils.run_bq_query(query)
@@ -91,7 +91,7 @@ def query_last_report():
     TO_JSON_STRING(metadata) as metadata,
     AVG(error_budget_burn_rate) as error_budget_burn_rate,
     AVG(alerting_burn_rate_threshold) as alerting_burn_rate_threshold,
-    FROM `{constants.TABLE_ID}`, UNNEST(metadata) as m
+    FROM `{constants.BIGQUERY_LAST_REPORT_TABLE_ID}`, UNNEST(metadata) as m
     {where_clause}
     GROUP BY service_name,feature_name,slo_name,slo_description,`window`,metadata
     ORDER BY alert DESC, error_budget_burn_rate DESC
@@ -106,7 +106,7 @@ def query_last_report():
 @app.route('/slos/last_report_count')
 def count_last_report():
     query = f"""
-    SELECT COUNT(*) AS count FROM `{constants.TABLE_ID}`
+    SELECT COUNT(*) AS count FROM `{constants.BIGQUERY_LAST_REPORT_TABLE_ID}`
     """
     result = utils.run_bq_query(query)
     # app.logger.debug(result)
@@ -115,7 +115,8 @@ def count_last_report():
 
 @app.route('/slos/all_reports')
 def query_dataset():
-    query_job = utils.bq_client.list_rows(constants.TABLE_ID, max_results=50)
+    query_job = utils.bq_client.list_rows(
+        constants.BIGQUERY_LAST_REPORT_TABLE_ID, max_results=50)
     df = query_job.to_dataframe()
     result = df.to_json(orient='records')
     # app.logger.debug(result)
