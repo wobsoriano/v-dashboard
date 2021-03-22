@@ -155,7 +155,6 @@ def get_slo_staging(name):
 @app.route('/slo/<name>/test', methods=['POST'])
 def test_slo(name):
     slo_config_path = request.get_json()['_path']
-
     ebp_config_path = os.path.abspath(constants.ERROR_BUDGET_POLICY_PATH)
     try:
         from slo_generator.utils import parse_config
