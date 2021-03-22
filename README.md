@@ -8,17 +8,24 @@ SRE Dashboard is useful for both SRE teams and application teams to get a feel
 of where they're at in their SRE journey, SLO adoption and SLO targets.
 
 ## Backend
-SRE Dashboard backend is written in Flask (Python). It is a simple layer to make
-queries to BigQuery.
+SRE Dashboard backend is written in Flask (Python). It is a simple interfacing 
+layer to make queries to BigQuery.
 
-### Project setup
+### Setup
 ```
+cp backend/.env.sample backend/.env
+```
+Set all the required environment variables in `backend/.env` file.
+
+### Run backend
+```
+cd backend/
 source .env
 flask run
 ```
 
 ## Frontend
-SRE Dashboard frontend is written in VueJS for the UI framework, and Tailwind 
+SRE Dashboard frontend is written in VueJS 3 for the UI framework, and Tailwind 
 CSS for the HTML / CSS styling.
 
 ### Project setup
@@ -26,12 +33,12 @@ CSS for the HTML / CSS styling.
 yarn
 ```
 
-#### Compiles and hot-reloads for development
+### Compiles and hot-reloads for development
 ```
 yarn dev
 ```
 
-#### Compiles and minifies for production
+### Compiles and minifies for production
 ```
 yarn build
 ```

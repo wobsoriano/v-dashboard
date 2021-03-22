@@ -26,8 +26,19 @@
           <!-- Input -->
           <div v-else>
             <input
+              type="text"
               class="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               v-model="data[index]"
+              v-if="isNaN(Number(data[index]))"
+            />
+            <input
+              type="number"
+              step="0.0001"
+              min="0"
+              max="1"
+              class="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              v-model.number="data[index]"
+              v-else
             />
           </div>
         </div>
@@ -40,7 +51,7 @@
           >
             {{ capitalize(index) }}
           </h3>
-          <json-form :data="data[index]" :defaultButtons="false" />
+          <slo-form :data="data[index]" :defaultButtons="false" />
         </div>
       </div>
 
@@ -51,7 +62,7 @@
           @click="this.$emit('saved')"
           class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transform hover:scale-110 motion-reduce:transform-none"
         >
-          Save
+          Save & Test
         </button>
         <button
           v-if="defaultButtons"
@@ -60,7 +71,6 @@
         >
           Reset
         </button>
-        <slot name="buttons"></slot>
       </div>
       <slot name="footer"></slot>
     </form>
@@ -71,7 +81,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "json-form",
+  name: 'slo-form',
   props: {
     data: {
       type: Object,
@@ -89,6 +99,10 @@ export default defineComponent({
       type: Number,
       default: 3,
     },
+    testLoading: {
+      type: Boolean,
+      default: false
+    }
   },
   methods: {
     isObject(value: any) {

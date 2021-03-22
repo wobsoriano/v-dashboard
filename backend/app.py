@@ -3,6 +3,7 @@ import constants
 import json
 import os
 import time
+import traceback
 import utils
 
 utils.setup_logging()
@@ -123,7 +124,7 @@ def query_dataset():
     return result
 
 
-@app.route('/slo/<name>', methods=['GET'])
+@app.route('/slo/<name>')
 def get_slo_config(name):
     return utils.get_slo_config(name)
 
@@ -142,19 +143,19 @@ def update_slo_config(name):
     }
 
 
-@app.route('/slo/<name>/diff', methods=['GET'])
-def get_slo_staging(name):
-    path = utils.get_slo_config(name)['_path']
+@app.route('/slo/<name>/diff')
+def diff_slo_config(name):
+    slo_config_path = utils.get_slo_config(name)['_path']
     diffs = utils.get_current_diff(constants.SLO_REPO_PATH)
-    rel_path = os.path.relpath(path, constants.SLO_REPO_PATH)
+    rel_path = os.path.relpath(slo_config_path, constants.SLO_REPO_PATH)
     # app.logger.info(rel_path)
     # app.logger.info(diffs)
     return {"diff": diffs.get(rel_path)}
 
 
-@app.route('/slo/<name>/test', methods=['POST'])
-def test_slo(name):
-    slo_config_path = request.get_json()['_path']
+@app.route('/slo/<name>/test')
+def test_slo_config(name):
+    slo_config_path = utils.get_slo_config(name)['_path']
     ebp_config_path = os.path.abspath(constants.ERROR_BUDGET_POLICY_PATH)
     try:
         from slo_generator.utils import parse_config
@@ -169,4 +170,8 @@ def test_slo(name):
         return {"success": True, "data": reports}
     except Exception as e:
         app.logger.exception(e)
-        return {"success": False, "errorMessage": f"Test failed: {repr(e)}"}
+        return {
+            "success": False,
+            "errorMessage": f"Test failed: {repr(e)}",
+            "traceback": traceback.format_exc()
+        }

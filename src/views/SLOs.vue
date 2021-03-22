@@ -76,7 +76,6 @@
 
     <!-- "Last 24 Hours" section -->
     <div class="text-lg text-gray-600 w-80">
-
       <!-- Roller header -->
       <div
         class="px-5 py-3 my-2 flex items-center shadow-md rounded-lg bg-gray-900"
@@ -141,7 +140,6 @@
       >
         <!-- Filters -->
         <div class="flex flex-wrap gap-1 pb-2">
-
           <!-- Add filter input -->
           <div class="flex flex-wrap gap-1">
             <div class="justify-center relative text-gray-500">
@@ -236,9 +234,10 @@
         </div>
 
         <!-- Table -->
-        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden bg-gray-800">
+        <div
+          class="inline-block min-w-full shadow rounded-lg overflow-hidden bg-gray-800"
+        >
           <table class="min-w-max w-full table-auto">
-
             <!-- Table headers -->
             <thead>
               <tr
@@ -256,29 +255,8 @@
 
             <!-- Table body -->
             <tbody class="text-gray-200 text-sm font-light">
+              <Loader :loading="loading" text="Loading data ..."/>
 
-              <!-- Loading data indicator -->
-              <div
-                v-if="loading"
-                class="flex items-center px-3 py-3 m-3 text-gray-200 bg-gray-800"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  class="animate-spin h-8 w-8"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  />
-                </svg>
-                <span class="px-3 text-xl"> Loading data ... </span>
-              </div>
-              
               <!-- Rows -->
               <tr
                 v-for="(i, index) in sloData"
@@ -287,36 +265,7 @@
               >
                 <!-- Warning / Check -->
                 <td class="px-4">
-                  <svg
-                    v-if="i.alert"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    class="w-10 h-10 text-red-600"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <svg
-                    v-else
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    class="w-10 h-10 text-green-400"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <StatusIcon :alert="i.alert" />
                 </td>
 
                 <!-- SLO Description -->
@@ -327,6 +276,7 @@
                 <!-- SLO -->
                 <td class="px-2">
                   <SLOCard
+                    class="grid grid-cols-1 xl:grid-cols-2 gap-1"
                     :sli="i.sli_measurement"
                     :slo="i.slo_target"
                     :gap="i.gap"
@@ -334,8 +284,6 @@
                     :bad_events="i.bad_events_count"
                     :burn_rate="i.error_budget_burn_rate"
                     :burn_rate_threshold="i.alerting_burn_rate_threshold"
-                    :window="i.window"
-                    :name="i.slo_name"
                   />
                 </td>
 
@@ -364,7 +312,10 @@
 
                 <!-- Window -->
                 <td class="px-2 text-left max-w-xs whitespace-pre">
-                  <div v-on:click="params['window'] = fmtTime(i.window)" class="text-md flex items-center">
+                  <div
+                    v-on:click="params['window'] = fmtTime(i.window)"
+                    class="text-md flex items-center"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -406,7 +357,9 @@
                       class="px-1 py-1 flex items-center text-gray-200 bg-gray-500 bg-opacity-25 rounded-full"
                       v-for="(element, index) in JSON.parse(i.metadata)"
                       :key="index"
-                      v-on:click="params['metadata.' + element.key] = element.value"
+                      v-on:click="
+                        params['metadata.' + element.key] = element.value
+                      "
                     >
                       <span class="px-1 font-semibold">{{ element.key }}:</span>
                       <span class="pr-1">{{ element.value }}</span>
@@ -417,13 +370,12 @@
                 <!-- Actions -->
                 <td class="px-2 text-xs">
                   <div class="flex item-center justify-center">
-                    
                     <!-- View icon -->
                     <div
                       class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                     >
                       <svg
-                        v-on:click="this.viewSLO(i)"
+                        v-on:click="navigateSLO(i, 'view')"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -449,7 +401,7 @@
                       class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                     >
                       <svg
-                        v-on:click="this.editSLO(i)"
+                        v-on:click="navigateSLO(i, 'edit')"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -469,7 +421,7 @@
                       class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
                     >
                       <svg
-                        v-on:click="this.removeSLO(i)"
+                        v-on:click="navigateSLO(i, 'remove')"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -494,27 +446,24 @@
             v-if="!loading"
             class="px-5 py-5 bg-gray-800 text-gray-200 flex flex-col xs:flex-row items-center xs:justify-between"
           >
-
             <!-- Table footer text -->
-            <span
-              v-if="count < offset + limit"
-              class="text-xs xs:text-sm"
-            >
-              Showing query results {{ offset + 1 }} to {{ offset + sloData.length }}
+            <span v-if="count < offset + limit" class="text-xs xs:text-sm">
+              Showing query results {{ offset + 1 }} to
+              {{ offset + sloData.length }}
             </span>
             <span v-else class="text-xs xs:text-sm">
-              Showing query results {{ offset + 1 }} to {{ offset + sloData.length }}
+              Showing query results {{ offset + 1 }} to
+              {{ offset + sloData.length }}
             </span>
 
             <!-- Footer buttons -->
             <div class="inline-flex mt-2 xs:mt-0">
-              
               <!-- Previous button -->
               <button
                 v-if="offset > 0"
                 v-on:click="
                   offset -= limit;
-                  fetchSloData();
+                  reloadData();
                 "
                 class="text-sm bg-gray-800 hover:bg-gray-600 border font-semibold px-4 rounded-full"
               >
@@ -526,7 +475,7 @@
                 v-else
                 v-on:click="
                   offset += limit;
-                  fetchSloData();
+                  reloadData();
                 "
                 class="text-sm bg-gray-800 hover:bg-gray-600 border font-semibold py-2 px-4 rounded-full"
               >
@@ -564,8 +513,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { slos } from "../hooks/api";
+import { sloMixin, fmtMixin, queryMixin } from "../hooks/shared";
 import SLOCard from "../components/SLOCard.vue";
 import Card from "../components/Card.vue";
+import Loader from "../components/Loader.vue";
+import StatusIcon from "../components/icons/StatusIcon.vue";
 
 export default defineComponent({
   data() {
@@ -582,115 +535,60 @@ export default defineComponent({
       filterKeyResponse: [],
       filterValueResponse: [],
       columns: [],
-    }
+    };
   },
   mounted() {
     this.params = this.$route.query;
-    this.fetchSloData();
-    this.getSloCount();
+    this.reloadData();
+    slos.getLastReportCount()
+      .then((resJson) => this.count = resJson[0].count)
   },
   watch: {
     params: {
       handler(val) {
         console.log("Watcher triggered");
-        this.reloadQueryString();
-        this.fetchSloData();
+        this.updateQueryString();
+        this.reloadData();
       },
       deep: true,
     },
-    input: function (val) {
-      if (val == "") {
+    input: function (query) {
+      if (query == "") {
         this.enableFilterKey = true;
         return;
       }
       if (this.enableFilterKey) {
-        fetch(`/api/slos/keys?q=${val}`)
-          .then((res) => res.json())
-          .then((resJson) => {
-            this.filterKeyResponse = resJson;
-            console.log(resJson);
-          });
+        slos.getKeys(query).then((resJson) => {
+          this.filterKeyResponse = resJson;
+        })
       } else {
-        fetch(`/api/slos/values?q=${val}`)
-          .then((res) => res.json())
-          .then((resJson) => {
-            if (val == "window") {
-              resJson = resJson.map(this.fmtTime);
-            }
-            this.filterValueResponse = resJson;
-            console.log(resJson);
-          });
+        slos.getValues(query).then((resJson) => {
+          this.filterValueResponse = resJson;
+        })
       }
     },
   },
   methods: {
-    async fetchSloData() {
+    async reloadData() {
       this.sloData = [];
       this.loading = true;
       var queryString = this.getQueryString();
-      fetch(
-        `/api/slos/last_report?offset=${this.offset}&limit=${this.limit}&${queryString}`
-      )
-        .then((res) => res.json())
+      slos.getLastReport(queryString, this.offset, this.limit)
         .then((resJson) => {
           this.sloData = resJson;
-          console.log(resJson[0]);
           this.loading = false;
-        });
+        })
     },
     async getSloCount() {
-      fetch("/api/slos/last_report_count")
-        .then((res) => res.json())
-        .then((resJson) => {
-          this.count = resJson[0].count;
-        });
-    },
-    viewSLO(sloData: Object){
-      console.log(sloData)
-      this.$router.push({name: 'SLO View', params: sloData})
-    },
-    editSLO(sloData: Object){
-      console.log(sloData)
-      var name = this.getSLOName(sloData)
-      this.$router.push({path: `/slo/${name}/edit`})
-    },
-    removeSLO(sloData: Object){
-      console.log(sloData)
-      // this.$router.push({name: '/slo/remove', params: sloData})
-    },
-    getSLOName(sloData: Object){
-      return sloData.service_name + '-' + sloData.feature_name + '-' + sloData.slo_name
-    },
-    fmtTime(seconds: number) {
-      var days = Math.floor(seconds / (24 * 60 * 60));
-      seconds -= days * (24 * 60 * 60);
-      var hours = Math.floor(seconds / (60 * 60));
-      seconds -= hours * (60 * 60);
-      var minutes = Math.floor(seconds / 60);
-      seconds -= minutes * 60;
-      var dDisplay = days > 0 ? days + "d" : "";
-      var hDisplay = hours > 0 ? hours + "h" : "";
-      var mDisplay = minutes > 0 ? minutes + "m" : "";
-      var sDisplay = seconds > 0 ? seconds + "s" : "";
-      return dDisplay + hDisplay + mDisplay + sDisplay;
-    },
-    getQueryString() {
-      return Object.keys(this.params)
-        .map((key) => key + "=" + this.params[key])
-        .join("&");
-    },
-    reloadQueryString() {
-      console.log("Within router");
-      history.pushState(
-        {},
-        null,
-        this.$route.path + "?" + this.getQueryString()
-      );
+      slos.getLastReportCount().then((resJson => this.count = resJson[0].count))
     },
   },
+  mixins: [fmtMixin, sloMixin, queryMixin],
   components: {
     Card,
     SLOCard,
+    StatusIcon,
+    Loader
   },
 });
 </script>
