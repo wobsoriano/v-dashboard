@@ -77,6 +77,7 @@ export default defineComponent({
     }
   },
   computed: {
+    // proxy for 'modelValue'
     local: {
       get() { return this.modelValue },
       set(v) { console.log("Hello ..."); this.$emit('update:modelValue', v)}
@@ -97,6 +98,3 @@ export default defineComponent({
   }
 });
 </script>
-
-
-    SLOFormField
