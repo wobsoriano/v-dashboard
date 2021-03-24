@@ -8,16 +8,16 @@
     <div v-if="index.startsWith('filter') || index.startsWith('query')">
       <textarea
         class="bshadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        @input="$emit('input', $event.target.value)"
+        v-model="local"
       />
     </div>
 
     <!-- Text input -->
-    <div v-else-if="isNaN(Number(value))">
+    <div v-else-if="isNaN(Number(local))">
       <input
         type="text"
         class="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        @input="$emit('input', $event.target.value)"
+        v-model="local"
       />
     </div>
 
@@ -29,7 +29,7 @@
         min="0"
         max="1"
         class="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        @input="$emit('input', parseFloat($event.target.value))"
+        v-model.number="local"
       />
     </div>
   </div>
@@ -39,7 +39,14 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props: ["index", "value"],
+  props: ["index", "modelValue"],
+  computed: {
+    // proxy for 'modelValue'
+    local: {
+      get() { return this.modelValue },
+      set(v) { this.$emit('update:modelValue', v) }
+    }
+  },
   methods: {},
 });
 </script>

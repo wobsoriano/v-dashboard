@@ -4,14 +4,14 @@
       <slot name="header"></slot>
 
       <!-- Loop through value object -->
-      <div class="mb-4" v-for="(subvalue, index) in value" :key="index">
+      <div class="mb-4" v-for="(subvalue, index) in local" :key="index">
         
         <!-- Hidden value, ignore -->
         <div v-if="index.startsWith('_')"></div>
 
         <!-- Single field -->
         <div v-else-if="!isObject(subvalue)">
-          <SLOFormField :value="subvalue" :index="index"/>
+          <SLOFormField v-model="local[index]" :index="index"/>
         </div>
         
         <!-- Nested object -->
@@ -22,7 +22,7 @@
           >
             {{ capitalize(index) }}
           </h3>
-          <slo-form :value="value[index]" :defaultButtons="false" />
+          <slo-form v-model="local[index]" :defaultButtons="false" />
         </div>
       </div>
 
@@ -50,11 +50,12 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import SLOFormField from "./SLOFormField.vue";
 
 export default defineComponent({
   name: 'slo-form',
   props: {
-    value: {
+    modelValue: {
       type: Object,
       default: () => {},
     },
@@ -75,6 +76,12 @@ export default defineComponent({
       default: false
     }
   },
+  computed: {
+    local: {
+      get() { return this.modelValue },
+      set(v) { console.log("Hello ..."); this.$emit('update:modelValue', v)}
+    }
+  },
   methods: {
     isObject(value: any) {
       return typeof value == "object";
@@ -85,6 +92,11 @@ export default defineComponent({
       return value.charAt(0).toUpperCase() + value.slice(1);
     },
   },
+  components: {
+    SLOFormField
+  }
 });
 </script>
 
+
+    SLOFormField

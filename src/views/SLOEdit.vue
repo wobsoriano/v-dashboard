@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="mb-4 text-gray-700 font-medium text-3xl">SLO Configuration</h3>
-    <SLOForm :formData="data" @saved="saveConfig()" @reset="resetConfig()">
+    <SLOForm v-model="data" @saved="saveConfig()" @reset="resetConfig()">
       <template v-slot:header>
         <div class="mb-2 m-2 text-right font-bold text-indigo-600">
           {{ data._relpath }}

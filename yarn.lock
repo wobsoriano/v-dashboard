@@ -8990,6 +8990,11 @@
     "vue-hot-reload-api" "^2.3.0"
     "vue-style-loader" "^4.1.0"
 
+"vue-lodash@^2.1.2":
+  "integrity" "sha512-6QsNC7/XjrK4xKxFhh6Ppvcrfm0uAeR/lFsySsMgfEFUWkvRztcAIS3MsqAI4bBnAaLo9ou+8tUfJ8d+yrljQg=="
+  "resolved" "https://registry.npmjs.org/vue-lodash/-/vue-lodash-2.1.2.tgz"
+  "version" "2.1.2"
+
 "vue-router@^4.0.0-beta.13":
   "integrity" "sha512-AQq+pllb6FCc7rS6vh4PPcce3XA1jgK3hKNkQ4hXHwoVN7jOeAOMKCnX7XAX3etV9rmN7iNW8iIwgPk95ckBjw=="
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.0.5.tgz"
@@ -9008,7 +9013,7 @@
   "resolved" "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@^2 || ^3.0.0-0", "vue@^3.0.0", "vue@3.0.7":
+"vue@^2 || ^3.0.0-0", "vue@^3.0.0", "vue@>= 2.0.0", "vue@3.0.7":
   "integrity" "sha512-8h4TikD+JabbMK9aRlBO4laG0AtNHRPHynxYgWZ9sq1YUPfzynd9Jeeb27XNyZytC7aCQRX9xe1+TQJuc181Tw=="
   "resolved" "https://registry.yarnpkg.com/vue/-/vue-3.0.7.tgz"
   "version" "3.0.7"
