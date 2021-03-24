@@ -39,7 +39,7 @@
           <div class="flex" v-for="step in configTestData" :key="step.name">
             <div>{{ fmtTime(step.window) }}</div>
             <SLOCard
-              cls="flex gap-5"
+              class="flex gap-5"
               :sli="step.sli_measurement"
               :slo="step.slo_target"
               :gap="step.gap"

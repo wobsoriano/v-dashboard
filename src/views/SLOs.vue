@@ -276,7 +276,7 @@
                 <!-- SLO -->
                 <td class="px-2">
                   <SLOCard
-                    cls="grid grid-cols-1 xl:grid-cols-2 gap-1"
+                    class="grid grid-cols-1 xl:grid-cols-2 gap-1"
                     :sli="i.sli_measurement"
                     :slo="i.slo_target"
                     :gap="i.gap"
