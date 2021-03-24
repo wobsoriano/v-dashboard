@@ -1,24 +1,48 @@
 {
-  "name": "tailwind-dashboard",
-  "version": "0.0.1",
+  "name": "slo-generator-ui-new",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production vite build --debug",
-    "preview": "cross-env NODE_ENV=production vite preview --port 3000"
+    "serve": "vue-cli-service serve src/main.ts",
+    "build": "vue-cli-service build src/main.ts",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@tailwindcss/forms": "^0.2.1",
-    "add": "^2.0.6",
-    "tailwindcss": "^1.9.6",
-    "vue": "next",
-    "vue-router": "^4.0.0-beta.13",
-    "vuetify": "^2.4.7",
-    "yarn": "^1.22.10"
+    "@vue/cli-plugin-typescript": "^4.5.12",
+    "core-js": "^3.6.5",
+    "postcss-nested": "^4.2.3",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-beta.13"
   },
   "devDependencies": {
-    "@tailwindcss/custom-forms": "^0.2.1",
+    "@tailwindcss/postcss7-compat": "^2.0.4",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
-    "cross-env": "^7.0.2",
-    "vite": "^1.0.0-rc.8"
-  }
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^7.8.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

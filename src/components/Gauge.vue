@@ -6,7 +6,7 @@
     <!-- Main gauge div -->
     <div
       class="flex items-center"
-      :class="change > 0 ? 'text-green-400' : 'text-orange-600'"
+      :class="change > 0 ? 'text-green-400' : 'text-red-600'"
     >
       <!-- Icon -->
       <slot></slot>

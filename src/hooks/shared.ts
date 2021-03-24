@@ -1,6 +1,6 @@
 export const queryMixin = {
     methods: {
-      getQueryString() {
+      getQueryString(): string {
         return Object.keys(this.params)
           .map((key) => key + "=" + this.params[key])
           .join("&");
@@ -9,7 +9,7 @@ export const queryMixin = {
         console.log("Within router");
         history.pushState(
           {},
-          null,
+          "",
           this.$route.path + "?" + this.getQueryString()
         );
       }
@@ -68,7 +68,7 @@ export const sloMixin = {
       this.$router.push({ path: `/slo/${name}/${method}` });
     },
     getSLOName(data: Object) {
-      return data.service_name + "-" + data.feature_name + "-" + data.slo_name;
+      return (data as any).service_name + "-" + (data as any).feature_name + "-" + (data as any).slo_name;
     },
   },
 }

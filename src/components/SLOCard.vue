@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-5 pb-5 pr-10 whitespace-pre" :class=class>
+  <div class="pt-5 pb-5 pr-10 whitespace-pre" :class="cls">
 
     <!-- Error budget burn rate -->
     <div class="col-auto">
@@ -115,7 +115,7 @@ export default defineComponent({
     bad_events: Number,
     burn_rate: Number,
     burn_rate_threshold: Number,
-    class: String
+    cls: String
   },
   components: {
     Gauge,

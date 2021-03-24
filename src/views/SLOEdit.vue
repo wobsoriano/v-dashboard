@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="mb-4 text-gray-700 font-medium text-3xl">SLO Configuration</h3>
-    <SLOForm :data="data" @saved="saveConfig()" @reset="resetConfig()">
+    <SLOForm :formData="data" @saved="saveConfig()" @reset="resetConfig()">
       <template v-slot:header>
         <div class="mb-2 m-2 text-right font-bold text-indigo-600">
           {{ data._relpath }}
@@ -39,7 +39,7 @@
           <div class="flex" v-for="step in configTestData" :key="step.name">
             <div>{{ fmtTime(step.window) }}</div>
             <SLOCard
-              class="flex gap-5"
+              cls="flex gap-5"
               :sli="step.sli_measurement"
               :slo="step.slo_target"
               :gap="step.gap"
@@ -119,7 +119,7 @@ export default defineComponent({
   },
   watch: {
     data: {
-      handler(val) {
+      handler() {
         this.formSavedError = "";
         if (!this.firstPageLoad) {
           this.formSavedOnDisk = false

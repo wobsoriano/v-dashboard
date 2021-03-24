@@ -75,7 +75,7 @@
     </div>
 
     <!-- "Last 24 Hours" section -->
-    <div class="text-lg text-gray-600 w-80">
+    <div class="text-lg text-gray-600">
       <!-- Roller header -->
       <div
         class="px-5 py-3 my-2 flex items-center shadow-md rounded-lg bg-gray-900"
@@ -135,7 +135,7 @@
 
       <!-- SLO Data Table-->
       <div
-        class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto"
+        class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto fluid"
         :class="toggleLast24Hours ? '' : 'hidden'"
       >
         <!-- Filters -->
@@ -276,7 +276,7 @@
                 <!-- SLO -->
                 <td class="px-2">
                   <SLOCard
-                    class="grid grid-cols-1 xl:grid-cols-2 gap-1"
+                    cls="grid grid-cols-1 xl:grid-cols-2 gap-1"
                     :sli="i.sli_measurement"
                     :slo="i.slo_target"
                     :gap="i.gap"
@@ -545,7 +545,7 @@ export default defineComponent({
   },
   watch: {
     params: {
-      handler(val) {
+      handler() {
         console.log("Watcher triggered");
         this.updateQueryString();
         this.reloadData();

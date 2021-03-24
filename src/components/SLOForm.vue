@@ -3,10 +3,10 @@
     <form @submit.prevent="" class="bg-white shadow-md rounded px-4 pt-2 pb-2 mb-4">
       <slot name="header"></slot>
 
-      <!-- Loop through data object -->
-      <div class="mb-4" v-for="(value, index) in data" :key="index">
+      <!-- Loop through formData object -->
+      <div class="mb-4" v-for="(value, index) in formData" :key="index">
 
-        <!-- Hidden data, ignore -->
+        <!-- Hidden formData, ignore -->
         <div v-if="index.startsWith('_')"></div>
 
         <!-- Simple values -->
@@ -19,7 +19,7 @@
           <div v-if="index.startsWith('filter') || index.startsWith('query')">
             <textarea
               class="bshadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              v-model="data[index]"
+              v-model="formData[index]"
             />
           </div>
 
@@ -28,8 +28,8 @@
             <input
               type="text"
               class="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              v-model="data[index]"
-              v-if="isNaN(Number(data[index]))"
+              v-model="formData[index]"
+              v-if="isNaN(Number(formData[index]))"
             />
             <input
               type="number"
@@ -37,7 +37,7 @@
               min="0"
               max="1"
               class="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              v-model.number="data[index]"
+              v-model.number="formData[index]"
               v-else
             />
           </div>
@@ -51,7 +51,7 @@
           >
             {{ capitalize(index) }}
           </h3>
-          <slo-form :data="data[index]" :defaultButtons="false" />
+          <slo-form :formData="formData[index]" :defaultButtons="false" />
         </div>
       </div>
 
@@ -83,7 +83,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: 'slo-form',
   props: {
-    data: {
+    formData: {
       type: Object,
       default: {},
     },
