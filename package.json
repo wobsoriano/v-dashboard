@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "build": "cross-env NODE_ENV=production vite build"
+    "build": "cross-env NODE_ENV=production vite build --debug",
+    "preview": "cross-env NODE_ENV=production vite preview --port 3000"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.2.1",
