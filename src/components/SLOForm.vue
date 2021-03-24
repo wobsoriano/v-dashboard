@@ -3,46 +3,17 @@
     <form @submit.prevent="" class="bg-white shadow-md rounded px-4 pt-2 pb-2 mb-4">
       <slot name="header"></slot>
 
-      <!-- Loop through formData object -->
-      <div class="mb-4" v-for="(value, index) in formData" :key="index">
-
-        <!-- Hidden formData, ignore -->
+      <!-- Loop through value object -->
+      <div class="mb-4" v-for="(subvalue, index) in value" :key="index">
+        
+        <!-- Hidden value, ignore -->
         <div v-if="index.startsWith('_')"></div>
 
-        <!-- Simple values -->
-        <div v-else-if="!isObject(value)">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="value">
-            {{ index }}</label
-          >
-
-          <!-- Text area -->
-          <div v-if="index.startsWith('filter') || index.startsWith('query')">
-            <textarea
-              class="bshadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              v-model="formData[index]"
-            />
-          </div>
-
-          <!-- Input -->
-          <div v-else>
-            <input
-              type="text"
-              class="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              v-model="formData[index]"
-              v-if="isNaN(Number(formData[index]))"
-            />
-            <input
-              type="number"
-              step="0.0001"
-              min="0"
-              max="1"
-              class="shadow appearance-none border rounded w-full py-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              v-model.number="formData[index]"
-              v-else
-            />
-          </div>
+        <!-- Single field -->
+        <div v-else-if="!isObject(subvalue)">
+          <SLOFormField :value="subvalue" :index="index"/>
         </div>
-
+        
         <!-- Nested object -->
         <div v-else>
           <h3
@@ -51,7 +22,7 @@
           >
             {{ capitalize(index) }}
           </h3>
-          <slo-form :formData="formData[index]" :defaultButtons="false" />
+          <slo-form :value="value[index]" :defaultButtons="false" />
         </div>
       </div>
 
@@ -83,9 +54,9 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: 'slo-form',
   props: {
-    formData: {
+    value: {
       type: Object,
-      default: {},
+      default: () => {},
     },
     title: {
       type: String,

@@ -29,16 +29,13 @@ SRE Dashboard frontend is written in VueJS 3 for the UI framework, and Tailwind
 CSS for the HTML / CSS styling.
 
 ### Project setup
-```
-yarn
-```
 
 ### Compiles and hot-reloads for development
 ```
-yarn dev
+npm run serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+npm run build
 ```
