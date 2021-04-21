@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="text-gray-700 text-3xl font-medium">UI Elements</h3>
+    <h3 class="text-3xl font-medium text-gray-700">UI Elements</h3>
 
     <!-- Alerts -->
     <div class="mt-4">
@@ -8,14 +8,14 @@
 
       <div class="mt-4">
         <div
-          class="rounded-md bg-white py-4 px-4 overflow-x-auto whitespace-nowrap"
+          class="px-4 py-4 overflow-x-auto bg-white rounded-md whitespace-nowrap"
         >
           <div
-            class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3"
+            class="inline-flex w-full max-w-sm ml-3 overflow-hidden bg-white rounded-lg shadow-md"
           >
-            <div class="flex justify-center items-center w-12 bg-green-500">
+            <div class="flex items-center justify-center w-12 bg-green-500">
               <svg
-                class="h-6 w-6 fill-current text-white"
+                class="w-6 h-6 text-white fill-current"
                 viewBox="0 0 40 40"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -25,10 +25,10 @@
               </svg>
             </div>
 
-            <div class="-mx-3 py-2 px-4">
+            <div class="px-4 py-2 -mx-3">
               <div class="mx-3">
-                <span class="text-green-500 font-semibold">Success</span>
-                <p class="text-gray-600 text-sm">
+                <span class="font-semibold text-green-500">Success</span>
+                <p class="text-sm text-gray-600">
                   Your account was registered!
                 </p>
               </div>
@@ -36,11 +36,11 @@
           </div>
 
           <div
-            class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3"
+            class="inline-flex w-full max-w-sm ml-3 overflow-hidden bg-white rounded-lg shadow-md"
           >
-            <div class="flex justify-center items-center w-12 bg-blue-500">
+            <div class="flex items-center justify-center w-12 bg-blue-500">
               <svg
-                class="h-6 w-6 fill-current text-white"
+                class="w-6 h-6 text-white fill-current"
                 viewBox="0 0 40 40"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -50,10 +50,10 @@
               </svg>
             </div>
 
-            <div class="-mx-3 py-2 px-4">
+            <div class="px-4 py-2 -mx-3">
               <div class="mx-3">
-                <span class="text-blue-500 font-semibold">Info</span>
-                <p class="text-gray-600 text-sm">
+                <span class="font-semibold text-blue-500">Info</span>
+                <p class="text-sm text-gray-600">
                   Channel archived by the owner.
                 </p>
               </div>
@@ -61,11 +61,11 @@
           </div>
 
           <div
-            class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3"
+            class="inline-flex w-full max-w-sm ml-3 overflow-hidden bg-white rounded-lg shadow-md"
           >
-            <div class="flex justify-center items-center w-12 bg-yellow-500">
+            <div class="flex items-center justify-center w-12 bg-yellow-500">
               <svg
-                class="h-6 w-6 fill-current text-white"
+                class="w-6 h-6 text-white fill-current"
                 viewBox="0 0 40 40"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -75,20 +75,20 @@
               </svg>
             </div>
 
-            <div class="-mx-3 py-2 px-4">
+            <div class="px-4 py-2 -mx-3">
               <div class="mx-3">
-                <span class="text-yellow-500 font-semibold">Warning</span>
-                <p class="text-gray-600 text-sm">Image size is too large.</p>
+                <span class="font-semibold text-yellow-500">Warning</span>
+                <p class="text-sm text-gray-600">Image size is too large.</p>
               </div>
             </div>
           </div>
 
           <div
-            class="inline-flex max-w-sm w-full bg-white shadow-md rounded-lg overflow-hidden ml-3"
+            class="inline-flex w-full max-w-sm ml-3 overflow-hidden bg-white rounded-lg shadow-md"
           >
-            <div class="flex justify-center items-center w-12 bg-red-500">
+            <div class="flex items-center justify-center w-12 bg-red-500">
               <svg
-                class="h-6 w-6 fill-current text-white"
+                class="w-6 h-6 text-white fill-current"
                 viewBox="0 0 40 40"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -98,10 +98,10 @@
               </svg>
             </div>
 
-            <div class="-mx-3 py-2 px-4">
+            <div class="px-4 py-2 -mx-3">
               <div class="mx-3">
-                <span class="text-red-500 font-semibold">Error</span>
-                <p class="text-gray-600 text-sm">Your email is already used!</p>
+                <span class="font-semibold text-red-500">Error</span>
+                <p class="text-sm text-gray-600">Your email is already used!</p>
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@
       <h4 class="text-gray-600">Radio Buttons</h4>
 
       <div class="mt-4">
-        <div class="flex rounded-md bg-white py-4 px-4 overflow-x-auto">
+        <div class="flex px-4 py-4 overflow-x-auto bg-white rounded-md">
           <label
             :class="`inline-flex items-center ${index && 'ml-3'}`"
             v-for="(c, index) in colors"
@@ -135,7 +135,7 @@
       <h4 class="text-gray-600">Checkboxes</h4>
 
       <div class="mt-4">
-        <div class="flex rounded-md bg-white py-4 px-4 overflow-x-auto">
+        <div class="flex px-4 py-4 overflow-x-auto bg-white rounded-md">
           <label
             :class="`inline-flex items-center ${index && 'ml-3'}`"
             v-for="(c, index) in colors"
@@ -156,7 +156,7 @@
       <h4 class="text-gray-600">Buttons</h4>
 
       <div class="mt-4">
-        <div class="flex rounded-md bg-white py-4 px-4 overflow-x-auto">
+        <div class="flex px-4 py-4 overflow-x-auto bg-white rounded-md">
           <button
             :class="`px-6 py-3 bg-${c}-600 rounded-md text-white font-medium tracking-wide hover:bg-${c}-500 ${
               index && 'ml-3'
@@ -175,31 +175,31 @@
       <h4 class="text-gray-600">Paginations</h4>
 
       <div class="mt-4">
-        <div class="flex rounded-md bg-white py-4 px-4 overflow-x-auto">
-          <div class="flex rounded mr-4">
+        <div class="flex px-4 py-4 overflow-x-auto bg-white rounded-md">
+          <div class="flex mr-4 rounded">
             <a
               href="#"
-              class="py-2 px-3 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 ml-0 rounded-l hover:bg-indigo-500 hover:text-white"
+              class="px-3 py-2 ml-0 leading-tight text-blue-700 bg-white border border-r-0 border-gray-200 rounded-l hover:bg-indigo-500 hover:text-white"
               ><span>Previous</span></a
             >
             <a
               href="#"
-              class="py-2 px-3 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 hover:bg-indigo-500 hover:text-white"
+              class="px-3 py-2 leading-tight text-blue-700 bg-white border border-r-0 border-gray-200 hover:bg-indigo-500 hover:text-white"
               ><span>1</span></a
             >
             <a
               href="#"
-              class="py-2 px-3 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 hover:bg-indigo-500 hover:text-white"
+              class="px-3 py-2 leading-tight text-blue-700 bg-white border border-r-0 border-gray-200 hover:bg-indigo-500 hover:text-white"
               ><span>2</span></a
             >
             <a
               href="#"
-              class="py-2 px-3 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 hover:bg-indigo-500 hover:text-white"
+              class="px-3 py-2 leading-tight text-blue-700 bg-white border border-r-0 border-gray-200 hover:bg-indigo-500 hover:text-white"
               ><span>3</span></a
             >
             <a
               href="#"
-              class="py-2 px-3 leading-tight bg-white border border-gray-200 text-blue-700 rounded-r hover:bg-indigo-500 hover:text-white"
+              class="px-3 py-2 leading-tight text-blue-700 bg-white border border-gray-200 rounded-r hover:bg-indigo-500 hover:text-white"
               ><span>Next</span></a
             >
           </div>
