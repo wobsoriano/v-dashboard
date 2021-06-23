@@ -6,7 +6,6 @@ whitelist = ["gray", "red", "orange", "yellow", "green", "teal", "blue", "purple
 module.exports = {
   mode: 'jit',
   purge: {
-    enabled: process.env.NODE_ENV === 'production',
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     options: {
       whitelist,
