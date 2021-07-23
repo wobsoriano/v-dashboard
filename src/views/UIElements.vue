@@ -136,7 +136,6 @@
               type="email"
               placeholder="Email"
               class="block w-full mt-1 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
-              v-model="email"
             />
           </label>
 
