@@ -1,18 +1,18 @@
 <template>
   <div>
-    <h3 class="text-gray-700 text-3xl font-semibold">Card</h3>
+    <h3 class="text-3xl font-semibold text-gray-700">Card</h3>
     <div class="mt-4 mb-3">
       <h4 class="text-gray-700">Stacked</h4>
 
-      <div class="max-w-sm rounded bg-white overflow-hidden shadow-lg mt-6">
+      <div class="max-w-sm mt-6 overflow-hidden bg-white rounded shadow-lg">
         <img
           class="w-full"
           src="https://picsum.photos/id/1016/384/234"
           alt="Sunset in the mountains"
         />
         <div class="px-6 py-4">
-          <div class="text-gray-900 font-bold text-xl mb-2">The Coldest Sunset</div>
-          <p class="text-gray-700 text-base">
+          <div class="mb-2 text-xl font-bold text-gray-900">The Coldest Sunset</div>
+          <p class="text-base text-gray-700">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Voluptatibus quia, nulla! Maiores et perferendis eaque,
             exercitationem praesentium nihil.
@@ -20,15 +20,15 @@
         </div>
         <div class="px-6 pt-4 pb-2">
           <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+            class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
             >#photography</span
           >
           <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+            class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
             >#travel</span
           >
           <span
-            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+            class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
             >#winter</span
           >
         </div>
@@ -37,19 +37,19 @@
     <hr />
     <div class="mt-5">
       <h4 class="text-gray-700">Horizontal</h4>
-      <div class="max-w-sm w-full lg:max-w-full lg:flex mt-6">
+      <div class="w-full max-w-sm mt-6 lg:max-w-full lg:flex">
         <div
-          class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          class="flex-none h-48 overflow-hidden text-center bg-cover rounded-t lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l"
           style="background-image: url('https://picsum.photos/id/0/192/213')"
           title="Woman holding a mug"
         ></div>
         <div
-          class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+          class="flex flex-col justify-between p-4 leading-normal bg-white border-b border-l border-r border-gray-200 rounded-b lg:border-l-0 lg:border-t lg:border-gray-200 lg:rounded-b-none lg:rounded-r"
         >
           <div class="mb-8">
-            <p class="text-sm text-gray-600 flex items-center">
+            <p class="flex items-center text-sm text-gray-600">
               <svg
-                class="fill-current text-gray-500 w-3 h-3 mr-2"
+                class="w-3 h-3 mr-2 text-gray-500 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
               >
@@ -59,10 +59,10 @@
               </svg>
               Members only
             </p>
-            <div class="text-gray-900 font-bold text-xl mb-2">
+            <div class="mb-2 text-xl font-bold text-gray-900">
               Can coffee make you a better developer?
             </div>
-            <p class="text-gray-700 text-base">
+            <p class="text-base text-gray-700">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Voluptatibus quia, nulla! Maiores et perferendis eaque,
               exercitationem praesentium nihil.
@@ -70,12 +70,12 @@
           </div>
           <div class="flex items-center">
             <img
-              class="w-10 h-10 rounded-full mr-4"
+              class="w-10 h-10 mr-4 rounded-full"
               src="https://via.placeholder.com/50"
               alt="Avatar of Jonathan Reinink"
             />
             <div class="text-sm">
-              <p class="text-gray-900 leading-none">Jonathan Reinink</p>
+              <p class="leading-none text-gray-900">Jonathan Reinink</p>
               <p class="text-gray-600">Aug 18</p>
             </div>
           </div>

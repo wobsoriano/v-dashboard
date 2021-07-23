@@ -244,24 +244,5 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-export default defineComponent({
-  setup() {
-    const colors = [
-      "gray",
-      "red",
-      "orange",
-      "yellow",
-      "green",
-      "teal",
-      "blue",
-      "indigo",
-      "purple",
-      "pink",
-    ];
-
-    return {
-      colors,
-    };
-  },
-});
+export default defineComponent({});
 </script>
