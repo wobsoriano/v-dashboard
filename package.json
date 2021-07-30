@@ -15,7 +15,6 @@
     "vue-router": "4"
   },
   "devDependencies": {
-    "@tailwindcss/custom-forms": "^0.2.1",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
     "autoprefixer": "^10.2.6",
