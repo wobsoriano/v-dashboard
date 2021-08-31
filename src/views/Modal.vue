@@ -82,17 +82,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 
-export default defineComponent({
-  setup() {
-    const open = ref(false);
-    return {
-      open,
-    };
-  },
-});
+const open = ref(false);
 </script>
 
 <style>

@@ -84,35 +84,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
-
-interface User {
-  username: string;
-  email: string;
-  password: string;
-  confirm: string;
-}
-
-export default defineComponent({
-  setup() {
-    const user = ref<User>({
-      username: '',
-      email: '',
-      password: '',
-      confirm: '',
-    });
-
-    const register = () => {
-      const data = JSON.parse(JSON.stringify(user.value));
-      console.log('Registered: ', data);
-    };
-
-    return {
-      user,
-      register,
-    };
-  },
-});
-</script>

@@ -218,8 +218,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 
 interface User {
   name: string;
@@ -230,22 +230,14 @@ interface User {
   role: string;
 }
 
-export default defineComponent({
-  setup() {
-    const testUser: User = {
-      name: "John Doe",
-      email: "john@example.com",
-      title: "Software Engineer",
-      title2: "Web dev",
-      status: "Active",
-      role: "Owner",
-    };
+const testUser: User = {
+  name: "John Doe",
+  email: "john@example.com",
+  title: "Software Engineer",
+  title2: "Web dev",
+  status: "Active",
+  role: "Owner",
+};
 
-    const users = ref<User[]>([...Array(10).keys()].map(() => testUser));
-
-    return {
-      users,
-    };
-  },
-});
+const users = ref<User[]>([...Array(10).keys()].map(() => testUser));
 </script>

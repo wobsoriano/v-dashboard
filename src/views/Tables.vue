@@ -329,24 +329,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
+<script setup lang="ts">
 import { useTableData } from "../hooks/useTableData";
 
-export default defineComponent({
-  setup() {
-    const {
-      simpleTableData,
-      paginatedTableData,
-      wideTableData,
-    } = useTableData();
-
-    return {
-      simpleTableData,
-      paginatedTableData,
-      wideTableData,
-    };
-  },
-});
+const {
+  simpleTableData,
+  paginatedTableData,
+  wideTableData,
+} = useTableData();
 </script>

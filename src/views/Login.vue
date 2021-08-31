@@ -73,25 +73,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-export default defineComponent({
-  setup() {
-    const router = useRouter();
-    const email = ref("johndoe@mail.com");
-    const password = ref("@#!@#asdf1231!_!@#");
+const router = useRouter();
+const email = ref("johndoe@mail.com");
+const password = ref("@#!@#asdf1231!_!@#");
 
-    function login() {
-      router.push("/dashboard");
-    }
-
-    return {
-      login,
-      email,
-      password,
-    };
-  },
-});
+function login() {
+  router.push("/dashboard");
+}
 </script>

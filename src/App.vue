@@ -5,22 +5,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+const defaultLayout = "default";
+</script>
+
+<script lang="ts" setup>
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 
-const defaultLayout = "default";
+const { currentRoute } = useRouter();
 
-export default defineComponent({
-  setup() {
-    const { currentRoute } = useRouter();
-
-    const layout = computed(
-      () => `${currentRoute.value.meta.layout || defaultLayout}-layout`
-    );
-
-    return {
-      layout,
-    };
-  },
-});
+const layout = computed(
+  () => `${currentRoute.value.meta.layout || defaultLayout}-layout`
+);
 </script>

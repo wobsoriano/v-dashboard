@@ -143,7 +143,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent, ref } from "vue";
 
 interface User {
@@ -153,24 +153,15 @@ interface User {
   confirm: string;
 }
 
-export default defineComponent({
-  setup() {
-    const user = ref<User>({
-      username: "",
-      email: "",
-      password: "",
-      confirm: "",
-    });
-
-    const register = () => {
-      const data = JSON.parse(JSON.stringify(user.value));
-      console.log("Registered: ", data);
-    };
-
-    return {
-      user,
-      register,
-    };
-  },
+const user = ref<User>({
+  username: "",
+  email: "",
+  password: "",
+  confirm: "",
 });
+
+const register = () => {
+  const data = JSON.parse(JSON.stringify(user.value));
+  console.log("Registered: ", data);
+};
 </script>
