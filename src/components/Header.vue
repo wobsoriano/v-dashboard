@@ -114,19 +114,10 @@
   </header>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 import { useSidebar } from "../hooks/useSidebar";
 
-export default defineComponent({
-  setup(_, { emit }) {
-    const dropdownOpen = ref(false);
-    const { isOpen } = useSidebar();
-
-    return {
-      isOpen,
-      dropdownOpen,
-    };
-  },
-});
+const dropdownOpen = ref(false);
+const { isOpen } = useSidebar();
 </script>
