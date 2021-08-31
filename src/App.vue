@@ -4,13 +4,11 @@
   </component>
 </template>
 
-<script lang="ts">
-const defaultLayout = "default";
-</script>
-
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed } from "vue";
 import { useRouter } from "vue-router";
+
+const defaultLayout = "default";
 
 const { currentRoute } = useRouter();
 
