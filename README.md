@@ -15,7 +15,7 @@ Note if you have access to [Tailwind UI](https://tailwindui.com), you can follow
 1. Install `@tailwindcss/ui`:
 
 ```sh
-yarn add @tailwindcss/ui
+pnpm add @tailwindcss/ui
 ```
 
 2. Add the plugin in `tailwind.config.js` without changing anything else:
@@ -26,22 +26,25 @@ module.exports = {
   // ...
   // rest of the config
   plugins: [require('@tailwindcss/ui')],
-}
+};
 ```
 
 ## Project setup
+
 ```
-yarn
+pnpm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
-yarn dev
+pnpm dev
 ```
 
 ### Compiles and minifies for production
+
 ```
-yarn build
+pnpm build
 ```
 
 ## License & copyright
