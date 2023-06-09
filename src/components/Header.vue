@@ -1,11 +1,19 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useSidebar } from '../hooks/useSidebar'
+
+const dropdownOpen = ref(false)
+const { isOpen } = useSidebar()
+</script>
+
 <template>
   <header
     class="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-indigo-600"
   >
     <div class="flex items-center">
       <button
-        @click="isOpen = true"
         class="text-gray-500 focus:outline-none lg:hidden"
+        @click="isOpen = true"
       >
         <svg
           class="w-6 h-6"
@@ -40,7 +48,7 @@
           class="w-32 pl-10 pr-4 text-indigo-600 border-gray-200 rounded-md sm:w-64 focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
           type="text"
           placeholder="Search"
-        />
+        >
       </div>
     </div>
 
@@ -64,21 +72,21 @@
 
       <div class="relative">
         <button
-          @click="dropdownOpen = !dropdownOpen"
           class="relative z-10 block w-8 h-8 overflow-hidden rounded-full shadow focus:outline-none"
+          @click="dropdownOpen = !dropdownOpen"
         >
           <img
             class="object-cover w-full h-full"
             src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=296&q=80"
             alt="Your avatar"
-          />
+          >
         </button>
 
         <div
           v-show="dropdownOpen"
-          @click="dropdownOpen = false"
           class="fixed inset-0 z-10 w-full h-full"
-        ></div>
+          @click="dropdownOpen = false"
+        />
 
         <transition
           enter-active-class="transition duration-150 ease-out transform"
@@ -95,29 +103,20 @@
             <a
               href="#"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
-              >Profile</a
-            >
+            >Profile</a>
             <a
               href="#"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
-              >Products</a
-            >
+            >Products</a>
             <router-link
               to="/"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
-              >Log out</router-link
             >
+              Log out
+            </router-link>
           </div>
         </transition>
       </div>
     </div>
   </header>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-import { useSidebar } from "../hooks/useSidebar";
-
-const dropdownOpen = ref(false);
-const { isOpen } = useSidebar();
-</script>

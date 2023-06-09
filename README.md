@@ -26,7 +26,7 @@ module.exports = {
   // ...
   // rest of the config
   plugins: [require('@tailwindcss/ui')],
-};
+}
 ```
 
 ## Project setup

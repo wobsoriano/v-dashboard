@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import Sidebar from './Sidebar.vue'
+import Header from './Header.vue'
+</script>
+
 <template>
   <div class="flex h-screen bg-gray-200 font-roboto">
     <Sidebar />
@@ -13,8 +18,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import Sidebar from "./Sidebar.vue";
-import Header from "./Header.vue";
-</script>

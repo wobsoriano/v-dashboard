@@ -1,9 +1,23 @@
+<script setup lang="ts">
+import { useTableData } from '../hooks/useTableData'
+
+const {
+  simpleTableData,
+  paginatedTableData,
+  wideTableData,
+} = useTableData()
+</script>
+
 <template>
   <div>
-    <h3 class="text-3xl font-medium text-gray-700">Tables</h3>
+    <h3 class="text-3xl font-medium text-gray-700">
+      Tables
+    </h3>
 
     <div class="mt-4">
-      <h4 class="text-gray-600">Simple Table</h4>
+      <h4 class="text-gray-600">
+        Simple Table
+      </h4>
 
       <div class="mt-6">
         <div class="my-6 overflow-hidden bg-white rounded-md shadow">
@@ -42,10 +56,14 @@
     </div>
 
     <div class="mt-8">
-      <h4 class="text-gray-600">Table with pagination</h4>
+      <h4 class="text-gray-600">
+        Table with pagination
+      </h4>
 
       <div class="mt-6">
-        <h2 class="text-xl font-semibold leading-tight text-gray-700">Users</h2>
+        <h2 class="text-xl font-semibold leading-tight text-gray-700">
+          Users
+        </h2>
 
         <div class="flex flex-col mt-3 sm:flex-row">
           <div class="flex">
@@ -113,7 +131,7 @@
             <input
               placeholder="Search"
               class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-            />
+            >
           </div>
         </div>
 
@@ -157,7 +175,7 @@
                           class="w-full h-full rounded-full"
                           :src="u.picture"
                           alt="profile pic"
-                        />
+                        >
                       </div>
 
                       <div class="ml-3">
@@ -170,7 +188,9 @@
                   <td
                     class="px-5 py-5 text-sm bg-white border-b border-gray-200"
                   >
-                    <p class="text-gray-900 whitespace-nowrap">{{ u.role }}</p>
+                    <p class="text-gray-900 whitespace-nowrap">
+                      {{ u.role }}
+                    </p>
                   </td>
                   <td
                     class="px-5 py-5 text-sm bg-white border-b border-gray-200"
@@ -188,7 +208,7 @@
                       <span
                         aria-hidden
                         :class="`absolute inset-0 bg-${u.statusColor}-200 opacity-50 rounded-full`"
-                      ></span>
+                      />
                       <span class="relative">{{ u.status }}</span>
                     </span>
                   </td>
@@ -198,9 +218,7 @@
             <div
               class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between"
             >
-              <span class="text-xs text-gray-900 xs:text-sm"
-                >Showing 1 to 4 of 50 Entries</span
-              >
+              <span class="text-xs text-gray-900 xs:text-sm">Showing 1 to 4 of 50 Entries</span>
 
               <div class="inline-flex mt-2 xs:mt-0">
                 <button
@@ -221,7 +239,9 @@
     </div>
 
     <div class="mt-8">
-      <h4 class="text-gray-600">Wide Table</h4>
+      <h4 class="text-gray-600">
+        Wide Table
+      </h4>
 
       <div class="flex flex-col mt-6">
         <div
@@ -255,7 +275,7 @@
                   </th>
                   <th
                     class="px-6 py-3 bg-gray-100 border-b border-gray-200"
-                  ></th>
+                  />
                 </tr>
               </thead>
 
@@ -270,7 +290,7 @@
                           class="w-10 h-10 rounded-full"
                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt="profile pic"
-                        />
+                        >
                       </div>
 
                       <div class="ml-4">
@@ -302,8 +322,7 @@
                   >
                     <span
                       class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                      >{{ u.status }}</span
-                    >
+                    >{{ u.status }}</span>
                   </td>
 
                   <td
@@ -315,9 +334,7 @@
                   <td
                     class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit</a
-                    >
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                   </td>
                 </tr>
               </tbody>
@@ -328,13 +345,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useTableData } from "../hooks/useTableData";
-
-const {
-  simpleTableData,
-  paginatedTableData,
-  wideTableData,
-} = useTableData();
-</script>

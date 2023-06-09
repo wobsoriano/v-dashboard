@@ -1,6 +1,32 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+interface User {
+  name: string
+  email: string
+  title: string
+  title2: string
+  status: string
+  role: string
+}
+
+const testUser: User = {
+  name: 'John Doe',
+  email: 'john@example.com',
+  title: 'Software Engineer',
+  title2: 'Web dev',
+  status: 'Active',
+  role: 'Owner',
+}
+
+const users = ref<User[]>([...Array(10).keys()].map(() => testUser))
+</script>
+
 <template>
   <div>
-    <h3 class="text-3xl font-medium text-gray-700">Dashboard</h3>
+    <h3 class="text-3xl font-medium text-gray-700">
+      Dashboard
+    </h3>
 
     <div class="mt-4">
       <div class="flex flex-wrap -mx-6">
@@ -43,8 +69,12 @@
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-              <div class="text-gray-500">New Users</div>
+              <h4 class="text-2xl font-semibold text-gray-700">
+                8,282
+              </h4>
+              <div class="text-gray-500">
+                New Users
+              </div>
             </div>
           </div>
         </div>
@@ -76,8 +106,12 @@
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">200,521</h4>
-              <div class="text-gray-500">Total Orders</div>
+              <h4 class="text-2xl font-semibold text-gray-700">
+                200,521
+              </h4>
+              <div class="text-gray-500">
+                Total Orders
+              </div>
             </div>
           </div>
         </div>
@@ -109,15 +143,19 @@
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">215,542</h4>
-              <div class="text-gray-500">Available Products</div>
+              <h4 class="text-2xl font-semibold text-gray-700">
+                215,542
+              </h4>
+              <div class="text-gray-500">
+                Available Products
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="mt-8"></div>
+    <div class="mt-8" />
 
     <div class="flex flex-col mt-8">
       <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -147,7 +185,7 @@
                 >
                   Role
                 </th>
-                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50" />
               </tr>
             </thead>
 
@@ -162,7 +200,7 @@
                         class="w-10 h-10 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
-                      />
+                      >
                     </div>
 
                     <div class="ml-4">
@@ -192,8 +230,7 @@
                 >
                   <span
                     class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                    >{{ u.status }}</span
-                  >
+                  >{{ u.status }}</span>
                 </td>
 
                 <td
@@ -205,9 +242,7 @@
                 <td
                   class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                 >
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                    >Edit</a
-                  >
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                 </td>
               </tr>
             </tbody>
@@ -217,27 +252,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-
-interface User {
-  name: string;
-  email: string;
-  title: string;
-  title2: string;
-  status: string;
-  role: string;
-}
-
-const testUser: User = {
-  name: "John Doe",
-  email: "john@example.com",
-  title: "Software Engineer",
-  title2: "Web dev",
-  status: "Active",
-  role: "Owner",
-};
-
-const users = ref<User[]>([...Array(10).keys()].map(() => testUser));
-</script>

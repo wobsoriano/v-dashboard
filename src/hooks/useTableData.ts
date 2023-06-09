@@ -1,26 +1,26 @@
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 export interface ISimpleTableData {
-  city: string;
-  totalOrders: string;
+  city: string
+  totalOrders: string
 }
 
 export interface IPaginatedTableData {
-  picture: string;
-  name: string;
-  role: string;
-  created: string;
-  status: string;
-  statusColor: string;
+  picture: string
+  name: string
+  role: string
+  created: string
+  status: string
+  statusColor: string
 }
 
 export interface IWideTableData {
-  name: string;
-  email: string;
-  title: string;
-  title2: string;
-  status: string;
-  role: string;
+  name: string
+  email: string
+  title: string
+  title2: string
+  status: string
+  role: string
 }
 
 export function useTableData() {
@@ -29,7 +29,7 @@ export function useTableData() {
     { city: 'Manchester', totalOrders: '632,310' },
     { city: 'London', totalOrders: '451,110' },
     { city: 'Madrid', totalOrders: '132,524' },
-  ]);
+  ])
 
   const paginatedTableData = ref<IPaginatedTableData[]>([
     {
@@ -68,7 +68,7 @@ export function useTableData() {
       status: 'Inactive',
       statusColor: 'red',
     },
-  ]);
+  ])
 
   const wideTableData = ref<IWideTableData[]>(
     [...Array(10).keys()].map(() => ({
@@ -78,12 +78,12 @@ export function useTableData() {
       title2: 'Web dev',
       status: 'Active',
       role: 'Owner',
-    }))
-  );
+    })),
+  )
 
   return {
     simpleTableData,
     paginatedTableData,
     wideTableData,
-  };
+  }
 }

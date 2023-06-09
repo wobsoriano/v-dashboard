@@ -1,11 +1,24 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useSidebar } from '../hooks/useSidebar'
+
+const { isOpen } = useSidebar()
+const activeClass = ref(
+  'bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100',
+)
+const inactiveClass = ref(
+  'border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100',
+)
+</script>
+
 <template>
   <div class="flex">
     <!-- Backdrop -->
     <div
       :class="isOpen ? 'block' : 'hidden'"
-      @click="isOpen = false"
       class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"
-    ></div>
+      @click="isOpen = false"
+    />
     <!-- End Backdrop -->
 
     <div
@@ -34,9 +47,7 @@
             />
           </svg>
 
-          <span class="mx-2 text-2xl font-semibold text-white"
-            >V-Dashboard</span
-          >
+          <span class="mx-2 text-2xl font-semibold text-white">V-Dashboard</span>
         </div>
       </div>
 
@@ -162,11 +173,11 @@
           :class="[$route.name === 'Modal' ? activeClass : inactiveClass]"
           to="/modal"
         >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
-          <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
-          <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
-        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+            <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+            <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
+          </svg>
 
           <span class="mx-4">Modal</span>
         </router-link>
@@ -188,16 +199,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from "vue";
-import { useSidebar } from "../hooks/useSidebar";
-
-const { isOpen } = useSidebar();
-const activeClass = ref(
-  "bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
-);
-const inactiveClass = ref(
-  "border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-);
-</script>

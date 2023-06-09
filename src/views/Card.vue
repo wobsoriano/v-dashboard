@@ -1,17 +1,23 @@
 <template>
   <div>
-    <h3 class="text-3xl font-semibold text-gray-700">Card</h3>
+    <h3 class="text-3xl font-semibold text-gray-700">
+      Card
+    </h3>
     <div class="mt-4 mb-3">
-      <h4 class="text-gray-700">Stacked</h4>
+      <h4 class="text-gray-700">
+        Stacked
+      </h4>
 
       <div class="max-w-sm mt-6 overflow-hidden bg-white rounded shadow-lg">
         <img
           class="w-full"
           src="https://picsum.photos/id/1016/384/234"
           alt="Sunset in the mountains"
-        />
+        >
         <div class="px-6 py-4">
-          <div class="mb-2 text-xl font-bold text-gray-900">The Coldest Sunset</div>
+          <div class="mb-2 text-xl font-bold text-gray-900">
+            The Coldest Sunset
+          </div>
           <p class="text-base text-gray-700">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Voluptatibus quia, nulla! Maiores et perferendis eaque,
@@ -21,28 +27,27 @@
         <div class="px-6 pt-4 pb-2">
           <span
             class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
-            >#photography</span
-          >
+          >#photography</span>
           <span
             class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
-            >#travel</span
-          >
+          >#travel</span>
           <span
             class="inline-block px-3 py-1 mb-2 mr-2 text-sm font-semibold text-gray-700 bg-gray-200 rounded-full"
-            >#winter</span
-          >
+          >#winter</span>
         </div>
       </div>
     </div>
-    <hr />
+    <hr>
     <div class="mt-5">
-      <h4 class="text-gray-700">Horizontal</h4>
+      <h4 class="text-gray-700">
+        Horizontal
+      </h4>
       <div class="w-full max-w-sm mt-6 lg:max-w-full lg:flex">
         <div
           class="flex-none h-48 overflow-hidden text-center bg-cover rounded-t lg:h-auto lg:w-48 lg:rounded-t-none lg:rounded-l"
           style="background-image: url('https://picsum.photos/id/0/192/213')"
           title="Woman holding a mug"
-        ></div>
+        />
         <div
           class="flex flex-col justify-between p-4 leading-normal bg-white border-b border-l border-r border-gray-200 rounded-b lg:border-l-0 lg:border-t lg:border-gray-200 lg:rounded-b-none lg:rounded-r"
         >
@@ -73,10 +78,14 @@
               class="w-10 h-10 mr-4 rounded-full"
               src="https://via.placeholder.com/50"
               alt="Avatar of Jonathan Reinink"
-            />
+            >
             <div class="text-sm">
-              <p class="leading-none text-gray-900">Jonathan Reinink</p>
-              <p class="text-gray-600">Aug 18</p>
+              <p class="leading-none text-gray-900">
+                Jonathan Reinink
+              </p>
+              <p class="text-gray-600">
+                Aug 18
+              </p>
             </div>
           </div>
         </div>

@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -14,9 +16,11 @@
     "vue-router": "4.2.2"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.39.5",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/compiler-sfc": "^3.3.4",
     "autoprefixer": "^10.4.14",
+    "eslint": "^8.42.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.1.3",
